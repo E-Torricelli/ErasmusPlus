@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programma Erasmus+</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <!-- Header con Barra di Navigazione -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo Torricelli”" class="logo-img">
+            <h1>Erasmus+</h1>
+            <p>Arricchisce la vita, apre la mente.</p>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="erasmus-banner">
+        <p class="title">Programma Erasmus+ “E. Torricelli”<br><span class="subtitle">Scuola accreditata Erasmus+ 2021-2027</span><br><span class="oid">OID: E10286234</span></p>
+    </section>
+
+    <!-- Sezione Slideshow -->
+    <section class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slide fade">
+            <img src="images/erasmus1.png" alt="Opportunità per i Docenti" data-target="docenti" onclick="showSection(this)" />
+            
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide fade">
+            <img src="images/erasmus2.png" alt="Opportunità per gli Studenti" data-target="studenti" onclick="showSection(this)"  />
+            
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide fade">
+            <img src="images/erasmus3.jpeg" alt="Materiali e Risorse" data-target="materiali" onclick="showSection(this)" />
+            <div class="slide-content">
+               
+            </div>
+        </div>
+
+        <!-- Pallini per la navigazione dello slideshow -->
+        
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <!-- Frecce per la navigazione -->
+        <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+        <a class="next" onclick="moveSlide(1)">&#10095;</a>
+    </section>
+
+    <!-- Sezione delle card -->
+<section class="cards-container">
+    <div class="card">
+        <h3>Opportunità per i Docenti</h3>
+        <p>Scopri i bandi e le attività di Job Shadowing.</p>
+        <a href="#" class="button read-more" data-target="docenti">Scopri di più</a>
+    </div>
+    <div class="card">
+        <h3>Opportunità per gli Studenti</h3>
+        <p>Partecipa ai programmi di mobilità e scambi culturali.</p>
+        <a href="#" class="button read-more" data-target="studenti">Scopri di più</a>
+    </div>
+    <div class="card">
+        <h3>Materiali e Risorse</h3>
+        <p>Accesso a documenti e gallerie fotografiche.</p>
+        <a href="#" class="button read-more" data-target="materiali">Scopri di più</a>
+    </div>
+</section>
+
+    <!-- Sezioni per Docenti, Studenti e Materiali -->
+    <section class="section" id="docenti" style="display: none;">
+        <h3>Docenti</h3>
+        <ul>
+            <li><a href="bando-docenti.pdf" target="_blank">Bando per docenti & Temi delle attività di Job Shadowing</a></li>
+            <li><a href="criteri-selezione-docenti.pdf" target="_blank">Criteri di selezione per docenti</a></li>
+            <li><a href="allegati-bando-docenti.pdf" target="_blank">Allegati al bando per docenti</a></li>
+            <li><a href="graduatorie-docenti.pdf" target="_blank">Graduatorie - Link</a></li>
+        </ul>
+        <button class="close-button" onclick="closeSection('docenti')">Chiudi</button>
+    </section>
+
+    <section class="section" id="studenti" style="display: none;">
+        <h3>Studenti</h3>
+        <ul>
+            <li><a href="bando-studenti.pdf" target="_blank">Bando per studenti & Temi delle mobilità studentesche</a></li>
+            <li><a href="criteri-selezione-studenti.pdf" target="_blank">Criteri di selezione per studenti</a></li>
+            <li><a href="allegati-bando-studenti.pdf" target="_blank">Allegati al bando per studenti</a></li>
+            <li><a href="graduatorie-studenti.pdf" target="_blank">Graduatorie - Link</a></li>
+            <li><a href="visite-preparatorie.pdf" target="_blank">Visite preparatorie alle mobilità</a></li>
+        </ul>
+        <button class="close-button" onclick="closeSection('studenti')">Chiudi</button>
+    </section>
+
+    <section class="section" id="materiali" style="display: none;">
+        <h3>Materiali e Risorse</h3>
+        <ul>
+            <li><a href="materiali-e-presentazioni.pdf" target="_blank">Documenti e Presentazioni</a></li>
+            <li><a href="galleria-fotografica.html" target="_blank">Galleria Fotografica</a></li>
+        </ul>
+        <button class="close-button" onclick="closeSection('materiali')">Chiudi</button>
+    </section>
+    
+    <footer>
+        <div class="footer-content">    
+            <div class="footer-social">
+                <a href="#" target="_blank" class="social-icon">Facebook</a>
+                <a href="#" target="_blank" class="social-icon">Twitter</a>
+                <a href="#" target="_blank" class="social-icon">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Erasmus+. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript per la gestione del menù mobile e per le sezioni -->
+    <script>
+        // Funzione per il toggle del menù mobile
+        function toggleMenu() {
+    const menuIcon = document.querySelector('.menu-icon');
+    const nav = document.querySelector('header nav');
+    menuIcon.classList.toggle('active');
+    nav.classList.toggle('active');
+}
+
+// Funzione per mostrare la sezione corrispondente quando si clicca su "Leggi tutto"
+document.querySelectorAll('.read-more').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const targetSection = e.target.getAttribute('data-target');
+        const section = document.getElementById(targetSection);
+        section.style.display = 'block';
+        window.scrollTo(0, section.offsetTop); // Scorre alla sezione visibile
+    });
+});
+function adjustImageSize() {
+    const slides = document.querySelectorAll('.slide img');
+    
+    slides.forEach(slide => {
+        const slideContainer = slide.closest('.slide');
+        const containerWidth = slideContainer.offsetWidth;
+        const containerHeight = slideContainer.offsetHeight;
+        
+        // Calcola il rapporto d'aspetto
+        const containerAspectRatio = containerWidth / containerHeight;
+        const imageAspectRatio = slide.naturalWidth / slide.naturalHeight;
+        
+        if (imageAspectRatio > containerAspectRatio) {
+            slide.style.width = '100%';
+            slide.style.height = 'auto';
+        } else {
+            slide.style.height = '100%';
+            slide.style.width = 'auto';
+        }
+    });
+}
+// Gestione delle slide
+let slideIndex = 1;
+
+
+function showSlides() {
+    let slides = document.querySelectorAll('.slide');
+    let dots = document.querySelectorAll('.dot');
+    
+    // Nascondi tutte le slide
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+        slides[i].style.opacity = "0";  // Imposta opacità a 0 per le slide nascoste
+    }
+
+    // Rimuovi la classe "active" dai pallini
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+    }
+
+    // Mostra la slide attuale e applica l'opacità
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(function() {
+        slides[slideIndex - 1].style.opacity = "1";  // Fai apparire la slide con la transizione
+    }, 10);
+
+    // Aggiungi la classe "active" al pallino corrispondente
+    dots[slideIndex - 1].classList.add('active'); 
+}
+
+// Funzione per spostarsi tra le slide (prev/next)
+function moveSlide(n) {
+    let slides = document.querySelectorAll('.slide');
+    slideIndex += n;
+
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    } 
+    if (slideIndex < 1) {
+        slideIndex = slides.length;
+    }
+
+    showSlides();  // Mostra la slide aggiornata
+}
+
+// Funzione per impostare la slide corrente al click sul pallino
+function currentSlide(n) {
+    slideIndex = n;  // Imposta la slide corrente
+    showSlides();
+}
+
+// Inizializzazione dello slideshow
+adjustImageSize();
+function showSection(imgElement) {
+    // Nascondi tutte le sezioni
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Mostra la sezione associata all'immagine cliccata
+    const targetSectionId = imgElement.getAttribute('data-target');
+    const targetSection = document.getElementById(targetSectionId);
+    targetSection.style.display = 'block';
+    
+    // Scrolla alla sezione visibile
+    window.scrollTo(0, targetSection.offsetTop);
+}
+// Funzione per mostrare la sezione corrispondente alla card
+document.querySelectorAll('.read-more').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault(); // Previene il comportamento di default del link
+
+        // Nascondi tutte le sezioni
+        const allSections = document.querySelectorAll('.section');
+        allSections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Ottieni l'ID della sezione corrispondente
+        const targetSection = e.target.getAttribute('data-target');
+        const sectionToShow = document.getElementById(targetSection);
+
+        // Mostra la sezione corrispondente
+        sectionToShow.style.display = 'block';
+
+        // Scrolla verso la sezione
+        window.scrollTo(0, sectionToShow.offsetTop); // Scorre alla sezione visibile
+    });
+});
+function closeSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.style.display = 'none'; // Nasconde la sezione
+}
+
+
+window.onload = function() {
+    showSlides();  // Mostra la prima slide quando la pagina è completamente caricata
+};
+    </script>
+</body>
+</html>
