@@ -516,6 +516,14 @@ footer {
         grid-template-columns: repeat(2, 1fr); /* 2 colonne */
     }
 }
+@media (min-width: 1200px) {
+    .cards-container {
+        width: 100%; /* Impostiamo la larghezza al 100% per evitare spazi vuoti laterali */
+        max-width: 1200px; /* Puoi personalizzare la larghezza massima */
+        margin: 0 auto; /* Centra il contenitore */
+        margin-left: 80px;
+    }
+}
 @media (max-width: 768px) {
     .cards-container {
         grid-template-columns: 1fr; /* 1 colonna per dispositivi mobili */
