@@ -19,28 +19,27 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*flex-wrap: wrap;*/
-    position: sticky; /* La barra sarà fissa durante lo scroll */
-    top: 0; /* Posiziona la barra sempre in cima alla pagina */
-    z-index: 1000; /* Assicurati che la barra rimanga sopra gli altri contenuti */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Aggiunto un'ombra per separarla dalla pagina */
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 }
 
 /* Logo */
 header .logo {
     display: flex;
-    align-items: center; /* Allinea il logo e il testo sulla stessa linea */
-    gap: 10px; /* Spazio tra l'immagine del logo e il testo */
+    align-items: center; 
+    gap: 10px; 
 }
 
 header .logo-img {
-    width: 40px; /* Puoi regolare la larghezza del logo a piacere */
-    height: auto; /* Mantieni le proporzioni dell'immagine */
+    width: 40px; 
+    height: auto; 
 }
 
 header .logo h1 {
     margin: 0;
-    font-size: 26px; /* Dimensione del titolo */
+    font-size: 26px; 
 }
 
 header .logo p {
@@ -63,14 +62,14 @@ header nav ul {
 
 header nav ul li {
     margin-left: 15px;
-    margin-top: 0px; /* Ridotto il margine in modo che i link siano ancora più in alto */
+    margin-top: 0px; 
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
-    padding: 8px 12px; /* Ridotto il padding dei link */
+    padding: 8px 12px; 
     display: inline-block;
 }
 
@@ -85,17 +84,9 @@ header nav ul li a:hover {
     margin-bottom: 50px;
     position: relative;
     width: 100%;
-    height: 400px; /* Altezza fissa per il container dello slideshow */
-    overflow: hidden; /* Nasconde eventuali immagini che escono dal contenitore */
-}
-
-.slide {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left:0;
+    height: 400px; 
+    overflow: hidden;
+    border-radius: 10px;
 }
 .slide img {
     position: absolute;
@@ -104,56 +95,57 @@ header nav ul li a:hover {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Riempie il contenitore senza spazi bianchi */
+    object-fit: content; 
+    transition: opacity 1s ease-in-out;
 }
-/* Per mostrare la slide corrente */
+
 .slide[style*="display: block"] {
-    opacity: 1; /* Quando visibile, la slide avrà opacità 1 */
+    opacity: 1; 
 }
 
 .slide-content {
     position: absolute;
     top: 50%;
-    left: 50px; /* Spostato più a destra (valore aumentato da 40px a 50px) */
-    transform: translateY(-50%); /* Centrato verticalmente, ma allineato a sinistra */
-    text-align: center; /* Allinea il testo a sinistra */
+    left: 50px; 
+    transform: translateY(-50%); 
+    text-align: center; 
     z-index: 2;
 }
 
 .cards-container {
     margin-top: 50px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonne */
-    gap: 20px; /* Spazio tra le card */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
     margin: 20px;
 }
 
 .card {
-    background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Gradiente morbido */
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9); 
     padding: 20px;
-    border-radius: 15px; /* Angoli arrotondati più morbidi */
+    border-radius: 15px;
     margin: 15px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Ombra più intensa */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Transizioni fluide */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; 
     position: relative;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 400px;
-    height: 200px; /* Altezza aumentata per più spazio */
-    border: 2px solid transparent; /* Aggiunta un bordo trasparente per il hover */
+    height: 200px; 
+    border: 2px solid transparent;
 }
-/* Aggiungi un effetto di sollevamento quando il mouse passa sopra la card */
+
 .card:hover {
-    transform: translateY(-8px); /* Solleva la card al passaggio del mouse */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Ombra più intensa */
-    border: 2px solid #0066cc; /* Aggiungi un bordo colorato */
+    transform: translateY(-1px); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+    border: 2px solid #0066cc; 
 }
 /* Stile del titolo della card */
 .card-title {
-    font-size: 22px; /* Titolo più grande */
+    font-size: 22px; 
     font-weight: bold;
     color: #333;
     margin-bottom: 15px;
@@ -164,7 +156,7 @@ header nav ul li a:hover {
     font-size: 16px;
     color: #555;
     line-height: 1.6;
-    height: 200px; /* Limita l'altezza per il contenuto */
+    height: 200px; 
     overflow: hidden;
 }
 .card h3 {
@@ -179,25 +171,19 @@ header nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-/* Mostra sempre la descrizione nelle card */
+
 .card .card-description {
     display: block;
-    line-height: 1.8; /* Maggiore spazio tra le righe per una lettura più fluida */
-    font-size: 18px; /* Rende il testo leggibile e moderno */
-    color: #333; /* Un grigio molto scuro per una lettura elegante */
-    margin-bottom: 20px; /* Più spazio sotto il testo per separarlo dal resto */
-    font-family: 'Roboto', sans-serif; /* Un font moderno e pulito */
-    text-align: left; /* Testo allineato a sinistra per un aspetto più professionale */
-    letter-spacing: 0.5px; /* Aggiunta di uno spazio tra le lettere per un look più sofisticato */
-    transition: color 0.3s ease, transform 0.3s ease; /* Transizione fluida al passaggio del mouse */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sottile ombra per un effetto di leggerezza */
+    line-height: 1.8; 
+    font-size: 18px; 
+    color: #333; 
+    margin-bottom: 20px; 
+    font-family: 'Roboto', sans-serif; 
+    text-align: left; 
+    letter-spacing: 0.5px; 
+    transition: color 0.3s ease, transform 0.3s ease; 
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
 }
-
-
-
-/* Se vuoi anche aggiungere una riga orizzontale elegante sotto la descrizione */
-
-
 .card .button {
     display: inline-block;
     padding: 10px 20px;
@@ -207,40 +193,39 @@ header nav ul li a:hover {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-/* Effetto hover per il pulsante */
+
 .card .button:hover {
     background-color: #0056b3;
-    transform: scale(1.05); /* Ingrossa il pulsante al passaggio del mouse */
+    transform: scale(1.05);
 }
 
-/* Overlay per mostrare maggiori dettagli (visibile solo al passaggio del mouse) */
+
 .card:hover .card-details {
-    opacity: 1; /* Rende visibile il contenuto extra */
-    transform: translateY(0); /* Rende il contenuto accessibile */
+    opacity: 1; 
+    transform: translateY(0); 
 }
-/* Dettagli aggiuntivi che appaiono sopra la card al passaggio del mouse */
 .card-details {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) translateY(20px); /* Rende i dettagli nascosti inizialmente */
-    opacity: 0; /* Nascosti per default */
-    background-color: #f9f9f9; /* Colore di sfondo chiaro per i dettagli */
+    transform: translate(-50%, -50%) translateY(20px); 
+    opacity: 0; 
+    background-color: #f9f9f9; 
     color: #333;
     padding: 20px;
-    border-radius: 12px; /* Angoli arrotondati */
-    transition: opacity 0.4s ease, transform 0.4s ease; /* Animazione per far apparire i dettagli */
-    width: 80%; /* Ampiezza della sezione */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra per far risaltare il contenuto */
-    z-index: 5; /* Assicurati che il contenuto sia sopra la card */
+    border-radius: 12px; 
+    transition: opacity 0.4s ease, transform 0.4s ease; 
+    width: 80%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    z-index: 5; 
    
 }
-/* Quando la card viene cliccata e i dettagli si aprono */
+
 .card.open .card-details {
     opacity: 1;
-    transform: translate(-50%, -50%) translateY(0); /* Dettagli visibili, animazione fluida */
+    transform: translate(-50%, -50%) translateY(0); 
 }
-/* Aggiungi un'animazione al testo dei dettagli per apparire lentamente */
+
 .card-details h4 {
     font-size: 1.4rem;
     margin-bottom: 15px;
@@ -272,14 +257,14 @@ header nav ul li a:hover {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Effetto hover sul pulsante di chiusura */
+
 .card-details .close-details:hover {
-    background-color: #00266d; /* Colore più scuro al passaggio del mouse */
-    transform: scale(1.1); /* Leggero ingrandimento del pulsante */
+    background-color: #00266d; /
+    transform: scale(1.1); 
 }
-/* Pulsante Chiudi */
+
 .close-button {
-    background-color:  #00266d; /* Colore rosso */
+    background-color:  #00266d; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -291,7 +276,7 @@ header nav ul li a:hover {
 }
 
 .close-button:hover {
-    background-color: #0066cc; /* Colore rosso scuro al passaggio del mouse */
+    background-color: #0066cc; 
 }
 
 .read-more {
@@ -300,60 +285,54 @@ header nav ul li a:hover {
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     font-weight: 500;
-    color: #333; /* Colore iniziale del testo */
+    color: #333; 
     text-decoration: none;
     transition: all 0.3s ease;
     margin-top: -7px;
-    position: relative; /* Per posizionare la linea sottostante */
+    position: relative; 
 }
 
 .read-more::after {
-    content: ''; /* Crea la pseudo-elemento */
+    content: ''; 
     position: absolute;
-    bottom: -3px; /* Posiziona la linea subito sotto il testo */
+    bottom: -3px; 
     left: 0;
-    width: 100%; /* La linea coprirà tutta la larghezza del testo */
-    height: 2px; /* Altezza della linea */
-    background-color: #333; /* Colore iniziale della linea (uguale al colore del testo) */
-    transform: scaleX(0); /* Inizialmente la linea non è visibile */
+    width: 100%; 
+    height: 2px; 
+    background-color: #333; 
+    transform: scaleX(0); 
     transform-origin: bottom right;
-    transition: transform 0.3s ease; /* Transizione per un effetto fluido */
+    transition: transform 0.3s ease; 
 }
 
 .read-more:hover {
-    color: #007bff; /* Cambia il colore del testo quando si passa sopra */
+    color: #007bff; 
 }
 
 .read-more:hover::after {
-    transform: scaleX(1); /* Mostra la linea quando si passa sopra */
-    background-color: #007bff; /* Colore della linea quando si passa sopra */
+    transform: scaleX(1); 
+    background-color: #007bff; 
 }
 
 .read-more i {
     margin-left: 5px;
     transition: color 0.3s ease;
-    font-size: 1.2rem; /* Dimensione leggermente più grande */
+    font-size: 1.2rem; 
     transition: transform 0.3s ease, color 0.3s ease;
-    color: #0056b3; /* Colore coordinato con il link */
+    color: #0056b3; 
 }
-
-/* Contenuto nascosto inizialmente */
 .card p {
     display: none;
     transition: all 0.3s ease;
 }
-
-/* Mostra il contenuto quando l'elemento viene cliccato */
 .card.active p {
     display: block;
 }
-
-/* Indicatori sotto il slideshow (pallini) */
 .dots-container {
     position: absolute;
-    bottom: 20px; /* Posizionati alla parte inferiore del contenitore */
+    bottom: 20px; 
     left: 50%;
-    transform: translateX(-50%); /* Centrato orizzontalmente */
+    transform: translateX(-50%); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -364,7 +343,7 @@ header nav ul li a:hover {
     height: 15px;
     width: 15px;
     margin: 0 8px;
-    background-color: #bbb; /* Colore di default dei pallini */
+    background-color: #bbb; 
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.3s ease;
@@ -372,71 +351,34 @@ header nav ul li a:hover {
 }
 
 .dot.active {
-    background-color: #0066cc; /* Colore dei pallini attivi */
+    background-color: #0066cc; 
 }
 
 .dot:hover {
-    background-color: #003399; /* Colore al passaggio del mouse */
+    background-color: #003399; 
 }
-
-
 .prev, .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #003399;
-    color: white;  /* Colore delle frecce bianche */
-    padding: 10px 20px;  /* Distanza dalle frecce */
-    font-size: 30px;  /* Dimensione della freccia */
-    border-radius: 5px;  /* Bordo arrotondato */
+    background-color: transparent;
+    color: #0066cc; 
+    padding: 10px 20px;  
+    font-size: 30px;  
+    border-radius: 5px;  
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     text-align: center;
     z-index: 10;
 }
-/* Posizione della freccia sinistra */
+
 .prev {
     left: 10px;
 }
-
-/* Posizione della freccia destra */
 .next {
     right: 10px;
 }
 
-/* Hover: cambia il colore di sfondo quando si passa sopra */
-.prev:hover, .next:hover {
-    background-color: #0066cc;  /* Colore più scuro al passaggio del mouse */
-    transform: translateY(-50%) scale(1.1);  /* Leggero ingrandimento e movimento */
-}
-
-/* Frecce */
-.arrow {
-    font-size: 24px;  /* Dimensione della freccia */
-}
-
-/* Sezione Intro */
-.intro {
-    text-align: center;
-    padding: 40px;
-    background-color: #e6f0ff;
-    border-radius: 8px;
-    margin-top: 0; /* Eliminato lo spazio tra la barra e la sezione */
-}
-
-.intro h2 {
-    font-size: 36px;
-    color: #003399;
-    margin-bottom: 20px;
-}
-
-.intro p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-/* Sezione Docenti, Studenti e Materiali */
 .section {
     margin: 30px;
     padding: 20px;
@@ -471,10 +413,8 @@ header nav ul li a:hover {
     font-weight: bold;
     text-decoration: underline;
 }
-
-/* Menu hamburger */
 .menu-icon {
-    display: none; /* Nascondi l'icona del menù su schermi larghi */
+    display: none; 
     flex-direction: column;
     cursor: pointer;
 }
@@ -487,78 +427,12 @@ header nav ul li a:hover {
 }
 
 footer {
-    background-color: #003399; /* Colore di sfondo blu scuro */
+    background-color: #003399; 
     color: white;
     padding: 40px 20px;
     text-align: center;
     margin-top: 100px;
 }
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    padding-top: 20px;
-}
-
-.footer-logo {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.footer-logo h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.footer-logo p {
-    font-size: 14px;
-}
-
-.footer-links {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-links ul {
-    list-style-type: none;
-}
-
-.footer-links ul li {
-    margin: 0 15px;
-}
-
-.footer-links ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-links ul li a:hover {
-    text-decoration: underline;
-}
-
-.footer-social {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.footer-social .social-icon {
-    margin-left: 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-social .social-icon:hover {
-    text-decoration: underline;
-}
-
 .footer-bottom {
     background-color: #00266d;
     padding: 10px 20px;
@@ -570,24 +444,24 @@ footer {
 /* Media Queries per schermi più piccoli (mobile) */
 @media (max-width: 768px) {
     header {
-        padding: 10px 20px; /* Maggiore padding per mobile */
+        padding: 10px 20px; 
     }
 
     header nav {
-        display: none; /* Nascondi il menù a schermi piccoli */
+        display: none; 
         width: 100%;
         flex-direction: column;
         align-items: center;
-        background-color: rgba(0, 51, 153, 0.9); /* Menu con maggiore trasparenza su mobile */
+        background-color: rgba(0, 51, 153, 0.9); 
         position: absolute;
-        top: 60px; /* Posiziona il menù sotto la barra */
+        top: 60px; 
         left: 0;
         right: 0;
         z-index: 999;
     }
 
     header nav.active {
-        display: flex; /* Mostra il menù quando la classe 'active' è aggiunta */
+        display: flex; 
     }
 
     header nav ul {
@@ -598,105 +472,92 @@ footer {
     }
 
     header nav ul li {
-        margin: 10px 0; /* Spaziatura verticale per i link */
+        margin: 10px 0; 
         text-align: center;
     }
 
     header nav ul li a {
-        font-size: 18px; /* Aumentato leggermente la dimensione del font su mobile */
+        font-size: 18px; 
     }
 
     .menu-icon {
-        display: flex; /* Mostra l'icona del menù su schermi piccoli */
+        display: flex; 
     }
 
     .menu-icon.active div:nth-child(1) {
-        transform: rotate(-45deg); /* Rotazione delle linee dell'icona */
+        transform: rotate(-45deg); 
     }
 
     .menu-icon.active div:nth-child(2) {
-        opacity: 0; /* Nasconde la linea centrale */
+        opacity: 0; 
     }
 
     .menu-icon.active div:nth-child(3) {
-        transform: rotate(45deg); /* Rotazione delle linee dell'icona */
+        transform: rotate(45deg); 
     }
-
-    /* Regola il layout per il slideshow in modalità mobile */
     .slideshow-container {
         height: 250px;
     }
 
     .slide {
-        height: 100%;
+        height: 200%;
     }
 
     .card {
         max-width: 90%;
     }
 }
-/* Layout responsive per dispositivi con larghezza inferiore a 1200px (per esempio, tablet) */
 @media (max-width: 1200px) {
     .cards-container {
         grid-template-columns: repeat(2, 1fr); /* 2 colonne */
     }
 }
-
-/* Layout responsive per dispositivi con larghezza inferiore a 768px (per esempio, smartphone) */
 @media (max-width: 768px) {
     .cards-container {
         grid-template-columns: 1fr; /* 1 colonna */
     }
 }
-
-/* Stile per la sezione Erasmus+ */
 .erasmus-banner {
-    background: linear-gradient(to bottom right, #b3e0ff, #d6f0ff); /* Sfondo sfumato celeste con bianco */
-    color: #0066cc; /* Colore del testo blu (simile a Erasmus+) */
+    background: linear-gradient(to bottom right, #b3e0ff, #d6f0ff); 
+    color: #0066cc; 
     padding: 30px;
     text-align: center;
-    font-family: 'Roboto', sans-serif; /* Font elegante */
+    font-family: 'Roboto', sans-serif; 
     font-size: 1.4em;
     line-height: 1.5;
-    border-radius: 15px; /* Angoli arrotondati */
-    margin: 20px 0; /* Spazio sopra e sotto */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leggera ombra per far risaltare la sezione */
+    border-radius: 15px; 
+    margin: 20px 0; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
-
-/* Stile per il testo */
 .erasmus-banner p {
     margin: 0;
     padding: 10px;
 }
-
-/* Aggiungi uno spazio tra le righe */
 .erasmus-banner br {
     margin-bottom: 10px;
 }
 .erasmus-banner .title {
-    font-family: 'Roboto', sans-serif; /* Font per il titolo */
-    font-size: 1em; /* Grandezza per il titolo */
-    font-weight: 700; /* Grassetto per il titolo */
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1em; 
+    font-weight: 700; 
     line-height: 1.2;
-    letter-spacing: 2px; /* Distanza tra le lettere */
-    text-transform: uppercase; /* Maiuscolo per il titolo */
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
     margin: 0;
 }
 
-/* Stile per il sottotitolo */
-.erasmus-banner .subtitle {
-    font-family: 'Roboto', sans-serif; /* Font più leggero */
-    font-size: 0.9em; /* Dimensione più piccola per il sottotitolo */
-    font-weight: 400; /* Normale per il sottotitolo */
-    margin-top: 15px;
-    font-style: italic; /* Corsivo per il sottotitolo */
-}
 
-/* Stile per OID */
+.erasmus-banner .subtitle {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 0.9em; 
+    font-weight: 400; 
+    margin-top: 15px;
+    font-style: italic; 
+}
 .erasmus-banner .oid {
-    font-family: 'Roboto', sans-serif; /* Font più leggero */
-    font-size: 1.2em; /* Più piccolo per OID */
-    font-weight: 300; /* Leggero per OID */
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.2em; 
+    font-weight: 300; 
     margin-top: 10px;
 }
 .allegati {
@@ -706,7 +567,7 @@ footer {
     padding-left: 10px;
     margin-top: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: none; /* Impostiamo che la sottosezione è nascosta di default */
+    display: none; 
 }
 
 .allegati a {
@@ -719,9 +580,6 @@ footer {
 .allegati a:hover {
     text-decoration: underline;
 }
-
-
-
 .close-button {
     margin-top: 8px;
     padding: 5px 10px;
@@ -735,5 +593,3 @@ footer {
 .close-button:hover {
     background-color: #007bff;
 }
-/* Font personalizzati se vuoi usare Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');

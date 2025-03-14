@@ -14,12 +14,12 @@ document.querySelectorAll('.menu-link').forEach(link => {
         const targetSection = e.target.getAttribute('data-target');
         const sectionToShow = document.getElementById(targetSection);
 
-        // Nascondi tutte le sezioni
+        
         const allSections = document.querySelectorAll('.section');
         allSections.forEach(section => {
             section.style.display = 'none';
 
-            // Nascondi anche tutte le sottosezioni
+            
             const subsections = section.querySelectorAll('.allegati');
             subsections.forEach(subsection => {
                 subsection.style.display = 'none';
@@ -31,7 +31,7 @@ document.querySelectorAll('.menu-link').forEach(link => {
 
         window.scrollTo(0, sectionToShow.offsetTop);
 
-        // Nascondi il menu hamburger una volta cliccato (in caso di schermo piccolo)
+        // Nasconde il menu hamburger una volta cliccato (in caso di schermo piccolo)
         toggleMenu();
     });
 });
@@ -48,7 +48,7 @@ document.querySelectorAll('.read-more').forEach(button => {
         allSections.forEach(section => {
             section.style.display = 'none';
 
-            // Nascondi anche tutte le sottosezioni
+            // Nasconde anche tutte le sottosezioni
             const subsections = section.querySelectorAll('.allegati');
             subsections.forEach(subsection => {
                 subsection.style.display = 'none';
@@ -59,16 +59,6 @@ document.querySelectorAll('.read-more').forEach(button => {
         window.scrollTo(0, sectionToShow.offsetTop);
     });
 });
-
-// Funzione per gestire il download degli allegati dei bandi
-function downloadAllegato(fileUrl) {
-    const link = document.createElement('a');
-    link.href = fileUrl;
-    link.download = '';
-    link.click();
-}
-
-// Funzione per regolare la dimensione delle immagini nello slideshow
 function adjustImageSize() {
     const slides = document.querySelectorAll('.slide img');
     slides.forEach(slide => {
@@ -78,16 +68,18 @@ function adjustImageSize() {
         const containerAspectRatio = containerWidth / containerHeight;
         const imageAspectRatio = slide.naturalWidth / slide.naturalHeight;
 
+        
         if (imageAspectRatio > containerAspectRatio) {
-            slide.style.width = '100%';
-            slide.style.height = 'auto';
+            slide.style.width = '100&';   
+            slide.style.height = 'auto';  
+            slide.style.objectFit = 'cover';  
         } else {
-            slide.style.height = '100%';
-            slide.style.width = 'auto';
+            slide.style.height = '100%';  
+            slide.style.width = 'auto';   
+            slide.style.objectFit = 'cover';  
         }
     });
 }
-
 // Funzione per gestire lo slideshow
 let slideIndex = 1;
 function showSlides() {
@@ -129,33 +121,12 @@ function currentSlide(n) {
     slideIndex = n;
     showSlides();
 }
-
-// Funzione per aprire la sezione corrispondente al click sull'immagine
-function showSection(imgElement) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.style.display = 'none';
-
-        // Nascondi tutte le sottosezioni
-        const subsections = section.querySelectorAll('.allegati');
-        subsections.forEach(subsection => {
-            subsection.style.display = 'none';
-        });
-    });
-
-    const targetSectionId = imgElement.getAttribute('data-target');
-    const targetSection = document.getElementById(targetSectionId);
-    targetSection.style.display = 'block';
-
-    window.scrollTo(0, targetSection.offsetTop);
-}
-
 // Funzione per chiudere la sezione
 function closeSection(sectionId) {
     const section = document.getElementById(sectionId);
     section.style.display = 'none';
 
-    // Nascondi tutte le sottosezioni della sezione
+    // Nasconde tutte le sottosezioni della sezione
     const subsections = section.querySelectorAll('.allegati');
     subsections.forEach(subsection => {
         subsection.style.display = 'none';
@@ -171,13 +142,13 @@ function toggleSubSection(sectionId, event) {
 
     const section = document.getElementById(sectionId);
 
-    // Se la sezione è già visibile, la chiudiamo
+    // Se la sezione è già visibile,chiude
     if (section.style.display === 'block') {
         section.style.display = 'none';
         return;
     }
 
-    // Chiudi tutte le sottosezioni aperte prima di aprire quella selezionata
+    // Chiude tutte le sottosezioni aperte prima di aprire quella selezionata
     const allSubSections = document.querySelectorAll('.allegati');
     allSubSections.forEach(subsection => {
         subsection.style.display = 'none';
@@ -189,6 +160,7 @@ function toggleSubSection(sectionId, event) {
 
 // Funzione per avviare lo slideshow quando la finestra è caricata
 window.onload = function() {
-    showSlides();
     adjustImageSize();
+    showSlides();
+    
 };
