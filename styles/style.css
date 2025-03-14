@@ -516,7 +516,14 @@ footer {
 }
 @media (max-width: 768px) {
     .cards-container {
-        grid-template-columns: 1fr; /* 1 colonna */
+        grid-template-columns: 1fr; /* 1 colonna per dispositivi mobili */
+        justify-items: center; /* Assicurati che le card siano centrate */
+    }
+
+    .card {
+        max-width: 90%; /* Riduce la larghezza delle card per dispositivi mobili */
+        width: 100%; /* 100% della larghezza disponibile */
+        margin: 15px auto; /* Centra le card orizzontalmente */
     }
 }
 .erasmus-banner {
