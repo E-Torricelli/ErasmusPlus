@@ -129,22 +129,49 @@ header nav ul li a:hover {
 }
 
 .card {
-    background-color: #fff;
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Gradiente morbido */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Angoli arrotondati più morbidi */
+    margin: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Ombra più intensa */
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Aggiunto effetto di trasformazione */
-    position: relative; /* Necessario per l'overlay */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Transizioni fluide */
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 200px; /* Altezza aumentata per più spazio */
+    border: 2px solid transparent; /* Aggiunta un bordo trasparente per il hover */
 }
 /* Aggiungi un effetto di sollevamento quando il mouse passa sopra la card */
 .card:hover {
-    transform: translateY(-10px); /* Sposta la card verso l'alto */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Aumenta l'ombra */
+    transform: translateY(-8px); /* Solleva la card al passaggio del mouse */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Ombra più intensa */
+    border: 2px solid #0066cc; /* Aggiungi un bordo colorato */
+}
+/* Stile del titolo della card */
+.card-title {
+    font-size: 22px; /* Titolo più grande */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Stile del contenuto della card */
+.card-content {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    height: 200px; /* Limita l'altezza per il contenuto */
+    overflow: hidden;
 }
 .card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #003399;
+    font-weight: bold;
 }
 .card h2 {
     font-size: 1.5em;
@@ -152,11 +179,24 @@ header nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-.card p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    line-height: 1.6;
+/* Mostra sempre la descrizione nelle card */
+.card .card-description {
+    display: block;
+    line-height: 1.8; /* Maggiore spazio tra le righe per una lettura più fluida */
+    font-size: 18px; /* Rende il testo leggibile e moderno */
+    color: #333; /* Un grigio molto scuro per una lettura elegante */
+    margin-bottom: 20px; /* Più spazio sotto il testo per separarlo dal resto */
+    font-family: 'Roboto', sans-serif; /* Un font moderno e pulito */
+    text-align: left; /* Testo allineato a sinistra per un aspetto più professionale */
+    letter-spacing: 0.5px; /* Aggiunta di uno spazio tra le lettere per un look più sofisticato */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transizione fluida al passaggio del mouse */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sottile ombra per un effetto di leggerezza */
 }
+
+
+
+/* Se vuoi anche aggiungere una riga orizzontale elegante sotto la descrizione */
+
 
 .card .button {
     display: inline-block;
@@ -255,16 +295,57 @@ header nav ul li a:hover {
 }
 
 .read-more {
-    padding: 10px 20px;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333; /* Colore iniziale del testo */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: -7px;
+    position: relative; /* Per posizionare la linea sottostante */
+}
+
+.read-more::after {
+    content: ''; /* Crea la pseudo-elemento */
+    position: absolute;
+    bottom: -3px; /* Posiziona la linea subito sotto il testo */
+    left: 0;
+    width: 100%; /* La linea coprirà tutta la larghezza del testo */
+    height: 2px; /* Altezza della linea */
+    background-color: #333; /* Colore iniziale della linea (uguale al colore del testo) */
+    transform: scaleX(0); /* Inizialmente la linea non è visibile */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease; /* Transizione per un effetto fluido */
 }
 
 .read-more:hover {
-    background-color: #003399;
+    color: #007bff; /* Cambia il colore del testo quando si passa sopra */
+}
+
+.read-more:hover::after {
+    transform: scaleX(1); /* Mostra la linea quando si passa sopra */
+    background-color: #007bff; /* Colore della linea quando si passa sopra */
+}
+
+.read-more i {
+    margin-left: 5px;
+    transition: color 0.3s ease;
+    font-size: 1.2rem; /* Dimensione leggermente più grande */
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #0056b3; /* Colore coordinato con il link */
+}
+
+/* Contenuto nascosto inizialmente */
+.card p {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+/* Mostra il contenuto quando l'elemento viene cliccato */
+.card.active p {
+    display: block;
 }
 
 /* Indicatori sotto il slideshow (pallini) */
@@ -617,6 +698,42 @@ footer {
     font-size: 1.2em; /* Più piccolo per OID */
     font-weight: 300; /* Leggero per OID */
     margin-top: 10px;
+}
+.allegati {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-top: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none; /* Impostiamo che la sottosezione è nascosta di default */
+}
+
+.allegati a {
+    text-decoration: none;
+    color: #616467;
+    display: block;
+    margin: 5px 0;
+}
+
+.allegati a:hover {
+    text-decoration: underline;
+}
+
+
+
+.close-button {
+    margin-top: 8px;
+    padding: 5px 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background-color: #007bff;
 }
 /* Font personalizzati se vuoi usare Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
