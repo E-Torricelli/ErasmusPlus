@@ -118,6 +118,8 @@ header nav ul li a:hover {
     grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
     margin: 20px;
+    justify-items: center; /* Centra le card orizzontalmente */
+    align-items: center;   /* Centra le card verticalmente */
 }
 
 .card {
