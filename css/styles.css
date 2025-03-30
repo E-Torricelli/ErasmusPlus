@@ -4,17 +4,17 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-/* Navbar */
+
 .navbar {
     position: sticky;
     top: 0;
     background-color: #003366;
-    transition: background-color 0.3s ease-in-out; /* Aggiungi la transizione */
+    transition: background-color 0.3s ease-in-out; 
     z-index: 1000;
 }
 
 .navbar.transparent {
-    background-color: rgba(255, 255, 255, 0.7); /* Colore di sfondo semitrasparente */
+    background-color: rgba(255, 255, 255, 0.7); 
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -34,12 +34,12 @@ body {
 
 /* Sezione informativa */
 .info-section {
-    background: linear-gradient(135deg, #2b6aa9, #96dcff); /* Gradiente dal blu scuro al celeste */
-    color: #ffffff; /* Colore del testo bianco per contrasto */
+    background: linear-gradient(135deg, #2b6aa9, #96dcff); 
+    color: #ffffff; 
     padding: 20px 20px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera per distacco */
-    border-radius: 8px; /* Angoli arrotondati per un look più morbido */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
 }
 
 .info-section p {
@@ -69,13 +69,13 @@ body {
     align-items: stretch;
 }
 
-/* Card */
+
 .card {
     background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
     width: 30%;
-    min-width: 280px; /* Larghezza minima per evitare che le carte diventino troppo strette */
+    min-width: 280px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -107,7 +107,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* Stile moderno per "Scopri di più" */
+
 .read-more {
     font-size: 1rem;
     color: #007bff;
@@ -142,7 +142,7 @@ body {
     width: 100%;
 }
 
-/* Footer */
+
 footer {
     background-color: #003366;
     color: white;
@@ -167,7 +167,7 @@ footer .container {
     flex-direction: row;
 }
 
-/* Applicare il corsivo con il font Dancing Script a "Erasmus+" */
+
 .erasmus-italic {
     font-family: 'Arial', sans-serif;
     font-style: italic;
@@ -177,11 +177,10 @@ footer .container {
 .oid {
     font-size: 0.9rem;
     font-weight: normal;
-    color: #e0e0e0; /* Colore grigio chiaro per un contrasto più morbido */
+    color: #e0e0e0; 
 }
 
-/* Personalizzazione Modale */
-/* Personalizzazione Modale */
+
 .modal-content {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 8px;
@@ -204,17 +203,17 @@ footer .container {
     letter-spacing: 0.3px;
 }
 
-/* Personalizzazione Modale */
+
 .modal-header .btn-close {
     filter: invert(0);
     opacity: 0.8;
-    color: #003366; /* Colore scuro per la "X" */
+    color: #003366; 
     transition: opacity 0.3s ease, color 0.3s ease;
 }
 
 .modal-header .btn-close:hover {
     opacity: 1;
-    color: #007bff; /* Cambia colore al passaggio del mouse per un effetto elegante */
+    color: #007bff; 
 }
 
 .modal-body {
@@ -265,7 +264,7 @@ footer .container {
     color: #007bff;
 }
 
-/* Transizioni della sezione allegati */
+
 #allegatiAccordion {
     overflow: hidden;
     max-height: 0;
@@ -282,13 +281,13 @@ footer .container {
     border-radius: 8px;
 }
 
-/* Personalizzazione dell'accordion */
+
 .collapse {
     margin-top: 10px;
     transition: max-height 0.4s ease-out;
 }
 
-/* Pulsante Allegato */
+
 #docenti-links-section {
     display: none;
     margin-top: 15px;
@@ -316,7 +315,7 @@ footer .container {
     transform: translateX(0);
 }
 
-/* Stile per i link nell'accordion e nei docenti */
+
 .card-body a,
 #docenti-links-section a {
    color: #003366;
@@ -351,12 +350,12 @@ footer .container {
     color: #007bff;
 }
 
-/* Effetto di apertura fluida per la sottosezione */
+
 .collapse.show {
     transition: max-height 0.6s ease-out;
 }
 
-/* Stile per il link specifico "allegato al bando per docenti" */
+
 .allegato-bando {
     color: #003366;
     font-size: 1rem;
@@ -369,7 +368,7 @@ footer .container {
     transform: scale(1.05);
 }
 
-/* Stile per il bottone "Allegati al bando per docenti" */
+
 .modal-body a.btn-link {
     font-size: 1rem;
     color: #003366;
@@ -383,35 +382,35 @@ footer .container {
     transform: scale(1.05);
 }
 
-/* Effetto hover per il bottone */
+
 .btn.btn-link:hover {
     color: #007bff;
     transform: scale(1.05);
     text-decoration: underline;
 }
 
-/* Rimuovi il focus outline (se desiderato) */
+
 .btn.btn-link:focus {
     outline: none;
 }
-/* Responsività: per schermi più piccoli */
+
 @media (max-width: 992px) {
     .card {
-        width: 45%; /* Riduci la larghezza delle carte su schermi medi */
+        width: 45%; 
     }
 }
 
 @media (max-width: 768px) {
     .card {
-        width: 100%; /* Le carte occupano tutta la larghezza su schermi piccoli */
-        min-width: unset; /* Rimuove il min-width per schermi molto piccoli */
+        width: 100%; 
+        min-width: unset; 
     }
 }
 
-/* Quando lo schermo è davvero piccolo (es. dispositivi mobili) */
+
 @media (max-width: 576px) {
     .card {
-        padding: 20px; /* Ridurre il padding per ottimizzare lo spazio su schermi piccoli */
-        width: 100%; /* Le carte occupano tutta la larghezza */
+        padding: 20px; 
+        width: 100%; 
     }
 }

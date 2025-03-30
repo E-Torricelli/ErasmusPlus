@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const materialiModal = document.getElementById('materialiModal');
     const allegatiAccordion = document.getElementById('allegatiAccordion');
 
-    // Funzione per chiudere l'accordion
+    
     function closeAccordion() {
         if (allegatiAccordion) {
             allegatiAccordion.classList.remove('show');  // Chiude l'accordion
         }
     }
 
-    // Aggiungi l'event listener per ogni modale
+    
     if (docentiModal) {
         docentiModal.addEventListener('hidden.bs.modal', closeAccordion); // Chiude l'accordion quando la modale docenti viene chiusa
     }
