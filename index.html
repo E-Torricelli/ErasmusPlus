@@ -1,177 +1,200 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erasmus+</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Erasmus+</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- FontAwesome per le icone -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-    <!-- Collegamento al file CSS esterno -->
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="images/erasmus.png" alt="Logo" class="logo">
-                <span class="erasmus-italic">Erasmus+</span> 
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#docenti-cards">Docenti</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#studenti-cards">Studenti</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#risorse-cards">Risorse</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Sezione immagine -->
-    <div class="container my-4">
-        <img src="images/logoC.jpg" alt="Erasmus+" class="hero-image">
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <div id="sidebar-header">
+        <h2><em>Erasmus+</em></h2>
     </div>
+  <button class="close-sidebar" onclick="toggleSidebar()">×</button>
+  <ul>
+      <li><a href="#" onclick="handleSidebarClick(1)">Docenti</a></li>
+      <li><a href="#" onclick="handleSidebarClick(2)">Studenti</a></li>
+      <li><a href="#" onclick="handleSidebarClick(3)">Risorse e Gallerie</a></li>
+      <li><a href="sito.html">Home</a></li>
+  </ul>
+</div>
 
-    <!-- Sezione informativa -->
-    <div class="container">
-        <div class="info-section">
-            <p>
-                Programma <span class="erasmus-italic">Erasmus+</span> “E. Torricelli” <br>
-                Accredited School  <span class>Erasmus+</span> 2021-2027 <br>
-                <span class="oid">OID: E10286234</span>
-            </p>
-        </div>
+
+<nav class="navbar">
+  <div class="navbar-left">
+    <a href="https://torricellimi.edu.it/">
+    <img src="img/erasmus.png" alt="Logo" class="logo" />
+  </a>
+  </div>
+
+  <ul class="navbar-links">
+    <li><a href="#" onclick="scrollToDetails(1)">Docenti</a></li>
+    <li><a href="#" onclick="scrollToDetails(2)">Studenti</a></li>
+    <li><a href="#" onclick="scrollToDetails(3)">Risorse e Gallerie</a></li>
+  </ul>
+
+  <!-- Hamburger Menu Button -->
+  <div class="hamburger" onclick="toggleSidebar()">
+    &#9776;
+  </div>
+</nav>
+<main>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>
+        Programma <em>Erasmus+</em>
+      </h1>
+      <p class="subtitle">"E.Torricelli" Accredited School</p>
+      <p class="description">
+        Il programma Erasmus+ ha l’obiettivo di consentire l’esperienza di vita in altri Paesi, la conoscenza di altre culture e l’acquisizione di una formazione più varia e completa. I risultati perseguiti sono la crescita dell’identità europea, il rafforzamento del concetto di multiculturalità e di multilinguismo, nonché il miglioramento delle prospettive lavorative dei cittadini europei.
+      </p>
+      <p class="oid">OID: E10286234</p>
     </div>
-
-    <!-- Sezione delle cards -->
-    <div class="container my-4">
-        <section class="cards-container">
-            
-            <div id="docenti-cards" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <h3>Opportunità per i Docenti</h3>
-                <p class="card-description">Scopri i bandi e le attività di Job Shadowing.</p>
-                <a href="#" class="read-more" data-bs-toggle="modal" data-bs-target="#docentiModal">Scopri di più</a>
-            </div>
-            
-            <div id="studenti-cards" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                <h3>Opportunità per gli Studenti</h3>
-                <p class="card-description">Partecipa ai programmi di mobilità e scambi culturali.</p>
-                <a href="#" class="read-more" data-bs-toggle="modal" data-bs-target="#studentiModal">Scopri di più</a>
-            </div>
-            
-            <div id="risorse-cards" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-images"></i>
-                </div>
-                <h3>Materiali e Risorse</h3>
-                <p class="card-description">Accesso a documenti e gallerie fotografiche.</p>
-                <a href="#" class="read-more" data-bs-toggle="modal" data-bs-target="#materialiModal">Scopri di più</a>
-            </div>
-        </section>
+    <div class="hero-img">
+      <img src="img/imgerasmus.png" alt="Immagine Erasmus+">
     </div>
-
-    <!-- Modale per Opportunità Docenti -->
-    <div class="modal fade" id="docentiModal" tabindex="-1" aria-labelledby="docentiModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="docentiModalLabel">Opportunità per i Docenti</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li><a href="docs/allegati/Bando_Erasmus_per_docenti.pdf" target="_blank">Bando per docenti & Temi delle attività di Job Shadowing</a></li>
-                        <li><a href="https://torricellimi.edu.it/allegati/all/832-circolare-n-182-graduatoria-provvisoria-erasmus.pdf" target="_blank">Graduatorie</a></li>
-                        <li><a href="#allegatiAccordion" data-bs-toggle="collapse" class="allegato-bando" aria-expanded="false" aria-controls="allegatiAccordion">Allegati al bando per docenti</a></li>
-                    </ul>
-                    <div class="collapse" id="allegatiAccordion">
-                        <div class="card card-body">
-                            <ul>
-                                <li><a href="docs/allegati/AllegatoA.pdf" target="_blank">Allegato A</a></li>
-                                <li><a href="docs/allegati/AllegatoB.pdf" target="_blank">Allegato B</a></li>
-                                <li><a href="docs/allegati/AllegatoC.pdf" target="_blank">Allegato C</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </div>
+</section>
+  <!-- Sezione con le Card -->
+  <section class="card-section">
+    <div class="card" onclick="scrollToDetails(1)">
+      <img src="img/docenti.png" alt="Illustrazione Docenti" class="card-img">
+      <h2>Opportunità per Docenti</h2>
+      <p>Scopri i bandi e le attività di Job Shadowing.</p>
     </div>
-
-    <!-- Modale per Opportunità Studenti -->
-    <div class="modal fade" id="studentiModal" tabindex="-1" aria-labelledby="studentiModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="studentiModalLabel">Opportunità per gli Studenti</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li><a href="https://torricellimi.edu.it/allegati/all/803-circolare-n-154-bando-erasmus-per-studenti-allegato.pdf" target="_blank"> Bando per studenti & Temi delle mobilità studentesche</a></li>
-                        <li><a href="https://torricellimi.edu.it/allegati/all/830-circolare-n-179-graduatorie-studenti-erasmus-plus.pdf"target="_blank" >Graduatorie - Link</a></li>
-                        <li><a href="#allegatiAccordion" data-bs-toggle="collapse" class="allegato-bando" aria-expanded="false" aria-controls="allegatiAccordion">Allegati al bando per studenti</a></li>
-                    </ul>
-                    <div class="collapse" id="allegatiAccordion">
-                        <div class="card card-body">
-                            <ul>
-                                <li><a href="https://torricellimi.edu.it/allegati/all/804-circolare-n-154-bando-erasmus-per-studenti-allegato-a.pdf" target="_blank">Allegato A</a></li>
-                                <li><a href="https://torricellimi.edu.it/allegati/all/805-circolare-n-154-bando-erasmus-per-studenti-allegato-b.pdf" target="_blank">Allegato B</a></li>
-                                <li><a href="https://torricellimi.edu.it/allegati/all/806-circolare-n-154-bando-erasmusper-studenti-allegato-c.pdf" target="_blank">Allegato C</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="card" onclick="scrollToDetails(2)">
+      <img src="img/studenti2.png" alt="Illustrazione Studenti" class="card-img">
+      <h2>Opportunità per Studenti</h2>
+      <p>Partecipa ai programmi di mobilità e scambi culturali.</p>
     </div>
-
-    <!-- Modale per Materiali e Risorse -->
-    <div class="modal fade" id="materialiModal" tabindex="-1" aria-labelledby="materialiModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="materialiModalLabel">Materiali e Risorse</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li><a href="index.html">Galleria Fotografica</a></li>
-                        <li><a href="index.html">Documenti Ufficiali</a></li>
-                        <li><a href="index.html">Guide per la Mobilità</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div class="card" onclick="scrollToDetails(3)">
+      <img src="img/gallerie.png" alt="Illustrazione Gallerie" class="card-img">
+      <h2>Gallerie e Risorse</h2>
+      <p>Accesso a documenti e gallerie fotografiche.</p>
     </div>
+  </section>
+  
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <img src="images/logo.png" alt="Logo" class="footer-logo">
-            <p>© 2025 <span class="erasmus">Erasmus+</span></p>
-        </div>
-    </footer>
+<!-- Sezione Dettagli per la Card 1 -->
+<section id="details1" class="details-section">
+    <button class="close-btn" onclick="closeDetails(1)">×</button>
+    <h2>Opportunità per Docenti</h2>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <button class="accordion">Bandi</button>
+    <div class="panel">
+        <ul>
+          <li><a href="docs/allegati/Bando_Erasmus_per_docenti.pdf" target="_blank">Bando per docenti & Temi delle attività di Job Shadowing</a></li>
+        </ul>
+    </div>
+    <button class="accordion">Graduatorie</button>
+    <div class="panel">
+      <ul>
+        <li><a href="https://torricellimi.edu.it/allegati/all/832-circolare-n-182-graduatoria-provvisoria-erasmus.pdf" target="_blank">Graduatorie</a></li>
+      </ul>
+    </div>
+    <button class="accordion">Allegati al bando per docenti</button>
+    <div class="panel">
+        <ul>
+          <li><a href="docs/allegati/AllegatoA.pdf" target="_blank">Allegato A</a></li>
+          <li><a href="docs/allegati/AllegatoB.pdf" target="_blank">Allegato B</a></li>
+          <li><a href="docs/allegati/AllegatoC.pdf" target="_blank">Allegato C</a></li>
+        </ul>
+    </div>
+   
+</section>
+
+<!-- Sezione Dettagli per la Card 2 -->
+<section id="details2" class="details-section">
+    <button class="close-btn" onclick="closeDetails(2)">×</button>
+    <h2>Opportunità per Studenti</h2>
+    <button class="accordion">Bandi</button>
+    <div class="panel">
+        <ul>
+        <li><a href="https://torricellimi.edu.it/allegati/all/803-circolare-n-154-bando-erasmus-per-studenti-allegato.pdf" target="_blank"> Bando per studenti & Temi delle mobilità studentesche</a></li>
+        </ul>
+    </div>
+    <button class="accordion">Graduatorie</button>
+    <div class="panel">
+        <ul>
+          <li><a href="https://torricellimi.edu.it/allegati/all/830-circolare-n-179-graduatorie-studenti-erasmus-plus.pdf"target="_blank" >Graduatorie - Link</a></li>
+        </ul>
+    </div>
+    <button class="accordion">Allegati al bando per studenti</button>
+    <div class="panel">
+        <ul>
+          <li><a href="https://torricellimi.edu.it/allegati/all/804-circolare-n-154-bando-erasmus-per-studenti-allegato-a.pdf" target="_blank">Allegato A</a></li>
+          <li><a href="https://torricellimi.edu.it/allegati/all/805-circolare-n-154-bando-erasmus-per-studenti-allegato-b.pdf" target="_blank">Allegato B</a></li>
+          <li><a href="https://torricellimi.edu.it/allegati/all/806-circolare-n-154-bando-erasmusper-studenti-allegato-c.pdf" target="_blank">Allegato C</a></li>
+        </ul>
+    </div>
     
+</section>
+
+<!-- Sezione Dettagli per la Card 3 -->
+<section id="details3" class="details-section">
+    <button class="close-btn" onclick="closeDetails(3)">×</button>
+    <h2>Gallerie e Risorse</h2>
+   
+    <button class="accordion">Gallerie</button>
+    <div class="panel">
+      <!-- Accordion annidato -->
+      <button class="accordion nested">Erasmus week in Bergen: 9–15 marzo</button>
+      <div class="panel nested-panel">
+        <ul>
+          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/bergen')">Bergen</li>
+          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/jobshadowing')">Jobshadowing</li>
+        </ul>
+      </div>
+    </div>
+    
+</section>
+
+<div id="imageSection" class="image-section">
+  <button id="closeGallery" class="close-gallery" title="Chiudi">&times;</button>
+</div>
+
+<div class="modalImage" id="modalImage" tabindex="0" onclick="closeModalImage(event)">
+  <span class="close" onclick="closeModalImage(event)">&times;</span>
+  <span class="nav-arrow left" onclick="prevImg(event)">&#10094;</span>
+  <img id="modal-img" src="" alt="Immagine grande" />
+  <span class="nav-arrow right" onclick="nextImg(event)">&#10095;</span>
+</div>
+</main>
+<footer>
+    <div style="max-width: 960px; margin: auto;">
+      <p style="margin-bottom: 0.3rem;">
+        Istituto E. Torricelli – via U. Dini, 7 - 20142 – Milano<br />
+        Tel: <a href="tel:02/89511344 " style="color: white; text-decoration: none;">02/89511344</a> |
+        Email: <a href="mailto:miis101008@istruzione.it" style="color:white; text-decoration: none;">miis101008@istruzione.it</a>
+      </p>
+  
+      <!--
+      <div style="margin: 0.5rem 0;">
+        <a href="https://www.facebook.com/tuascuola" target="_blank" style="color: white; margin: 0 0.4rem;">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/tuascuola" target="_blank" style="color: white; margin: 0 0.4rem;">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/tuascuola" target="_blank" style="color: white; margin: 0 0.4rem;">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/school/tuascuola" target="_blank" style="color: white; margin: 0 0.4rem;">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div> Social Icons -->
+      
+      <p style="margin-top: 0.5rem; color: #ccc;">© 2025 Erasmus+</p>
+      <img src="img/logo.png" alt="Logo" style="height: 40px; margin-right: 10px; border-radius: 50%;">
+    </div>
+  </footer>
+  <script src="script/script.js"></script>
+</body>
 </html>
