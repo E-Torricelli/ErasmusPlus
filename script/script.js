@@ -33,13 +33,15 @@ const images = {
 };
 
 // ====== Variabili ======
-const imageSection = document.getElementById('imageSection');
+const imageSection    = document.getElementById('imageSection');
 const closeGalleryBtn = document.getElementById('closeGallery');
 let currentImages = [];
-let currentIndex = 0;
+let currentIndex  = 0;
 
-// ====== Inizializzazione ======
+// Nascondi il bottone di chiusura all’avvio
 closeGalleryBtn.style.display = 'none';
+
+// Event listener per le card (scroll dettagli)
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', function () {
     if (imageSection.style.display === 'grid') hideGallery();
@@ -48,38 +50,73 @@ document.querySelectorAll('.card').forEach(card => {
   });
 });
 
-// ====== Galleria ======
+// ====== Prefetch delle prime N immagini ======
+function preload(images, count = 4) {
+  images.slice(0, count).forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
+// ====== Caricamento Galleria ======
 function loadImagesCard(event, subdirectory) {
   event.stopPropagation();
   const imageList = images[subdirectory];
   if (!imageList) return;
 
+  // Se già aperta, chiudi prima
   hideGallery();
-  imageSection.style.display = 'grid';
+
+  // Prefetch iniziale
+  preload(imageList);
+
+  // Mostra galleria
+  imageSection.style.display    = 'grid';
   closeGalleryBtn.style.display = 'flex';
   currentImages = imageList;
-  currentIndex = 0;
+  currentIndex  = 0;
 
+  // Crea elementi img senza src, con lazy+data-src
   imageList.forEach(src => {
     const img = document.createElement('img');
-    img.src = src;
-    img.onclick = () => openModalImage(src);
+    img.dataset.src = src;        // path reale memorizzato
+    img.loading    = 'lazy';      // lazy loading nativo
+    img.alt        = '';          // buona pratica aggiungere sempre alt
+    img.onclick    = () => openModalImage(src);
     imageSection.appendChild(img);
   });
 
+  // Intersection Observer per caricare solo quando servono
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        obs.unobserve(img);
+      }
+    });
+  }, { rootMargin: '100px' });
+
+  imageSection.querySelectorAll('img').forEach(img => {
+    observer.observe(img);
+  });
+
+  // Blocca scroll body e scrolla alla galleria
   document.body.classList.add('no-scroll');
   setTimeout(() => {
     window.scrollTo({ top: imageSection.offsetTop - 20, behavior: 'smooth' });
   }, 100);
 }
 
+// ====== Nascondi Galleria ======
 function hideGallery() {
-  imageSection.style.display = 'none';
+  imageSection.style.display    = 'none';
   closeGalleryBtn.style.display = 'none';
   imageSection.querySelectorAll('img').forEach(img => img.remove());
   document.body.classList.remove('no-scroll');
 }
 
+// Bottone di chiusura
 closeGalleryBtn.addEventListener('click', hideGallery);
 
 // ====== Modale immagini ======
