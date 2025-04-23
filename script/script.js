@@ -1,7 +1,7 @@
 // ====== Dati immagini ======
 const images = {
   "gallerie/erasmus_bergen/bergen": [
-    'gallerie/erasmus_bergen/bergen/slide4.jpg', 'gallerie/erasmus_bergen/bergen/slide5.jpeg', 'gallerie/erasmus_bergen/bergen/slide6.jpg',
+    'gallerie/erasmus_bergen/bergen/slide4.jpg', 'gallerie/erasmus_bergen/bergen/slide5.jpg', 'gallerie/erasmus_bergen/bergen/slide6.jpg',
     'gallerie/erasmus_bergen/bergen/slide7.jpg', 'gallerie/erasmus_bergen/bergen/slide8.jpg', 'gallerie/erasmus_bergen/bergen/slide9.jpg',
     'gallerie/erasmus_bergen/bergen/slide10.jpg', 'gallerie/erasmus_bergen/bergen/slide12.jpg',
     'gallerie/erasmus_bergen/bergen/slide13.jpg', 'gallerie/erasmus_bergen/bergen/slide14.jpg',
