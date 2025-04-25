@@ -10,25 +10,23 @@ const images = {
     'gallerie/erasmus_bergen/bergen/slide19.jpg','gallerie/erasmus_bergen/bergen/slide20.jpg',
     'gallerie/erasmus_bergen/bergen/slide21.jpg','gallerie/erasmus_bergen/bergen/slide22.jpg',
     'gallerie/erasmus_bergen/bergen/slide23.jpg','gallerie/erasmus_bergen/bergen/slide24.jpg',
+    'gallerie/erasmus_bergen/bergen/job1.jpg', 'gallerie/erasmus_bergen/bergen/job2.jpg',
+    'gallerie/erasmus_bergen/bergen/job3.jpg','gallerie/erasmus_bergen/bergen/job4.jpg',
+    'gallerie/erasmus_bergen/bergen/job5.jpg','gallerie/erasmus_bergen/bergen/job6.jpg',
+    'gallerie/erasmus_bergen/bergen/job7.jpg','gallerie/erasmus_bergen/bergen/job8.jpg',
+    'gallerie/erasmus_bergen/bergen/job9.jpg','gallerie/erasmus_bergen/bergen/job10.jpg',
   ],
   "gallerie/erasmus_bergen/jobshadowing": [
-    'gallerie/erasmus_bergen/jobshadowing/job1.jpg','gallerie/erasmus_bergen/jobshadowing/job2.jpg',
-    'gallerie/erasmus_bergen/jobshadowing/job3.jpg','gallerie/erasmus_bergen/jobshadowing/job4.jpg',
-    'gallerie/erasmus_bergen/jobshadowing/job5.jpg','gallerie/erasmus_bergen/jobshadowing/job6.jpg',
-    'gallerie/erasmus_bergen/jobshadowing/job7.jpg','gallerie/erasmus_bergen/jobshadowing/job8.jpg',
-    'gallerie/erasmus_bergen/jobshadowing/job9.jpg','gallerie/erasmus_bergen/jobshadowing/job10.jpg',
+    
   ],
   "gallerie/erasmus_bergen/students": [
-    'gallerie/erasmus_bergen/students/slide1.jpg',
-    'gallerie/erasmus_bergen/students/slide2.jpg'
+    
   ],
   "milan/arrivo": [
-    'images/milan/arrivo1.jpg',
-    'images/milan/arrivo2.jpg'
+    
   ],
   "milan/visite": [
-    'images/milan/visite1.jpg',
-    'images/milan/visite2.jpg'
+    
   ]
 };
 
@@ -38,10 +36,8 @@ const closeGalleryBtn = document.getElementById('closeGallery');
 let currentImages = [];
 let currentIndex  = 0;
 
-// Nascondi il bottone di chiusura all’avvio
 closeGalleryBtn.style.display = 'none';
 
-// Event listener per le card (scroll dettagli)
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', function () {
     if (imageSection.style.display === 'grid') hideGallery();
@@ -50,7 +46,6 @@ document.querySelectorAll('.card').forEach(card => {
   });
 });
 
-// ====== Prefetch delle prime N immagini ======
 function preload(images, count = 4) {
   images.slice(0, count).forEach(src => {
     const img = new Image();
@@ -58,35 +53,28 @@ function preload(images, count = 4) {
   });
 }
 
-// ====== Caricamento Galleria ======
 function loadImagesCard(event, subdirectory) {
   event.stopPropagation();
   const imageList = images[subdirectory];
   if (!imageList) return;
 
-  // Se già aperta, chiudi prima
   hideGallery();
-
-  // Prefetch iniziale
   preload(imageList);
 
-  // Mostra galleria
   imageSection.style.display    = 'grid';
   closeGalleryBtn.style.display = 'flex';
   currentImages = imageList;
   currentIndex  = 0;
 
-  // Crea elementi img senza src, con lazy+data-src
   imageList.forEach(src => {
     const img = document.createElement('img');
-    img.dataset.src = src;        // path reale memorizzato
-    img.loading    = 'lazy';      // lazy loading nativo
-    img.alt        = '';          // buona pratica aggiungere sempre alt
+    img.dataset.src = src;
+    img.loading    = 'lazy';
+    img.alt        = '';
     img.onclick    = () => openModalImage(src);
     imageSection.appendChild(img);
   });
 
-  // Intersection Observer per caricare solo quando servono
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -101,14 +89,12 @@ function loadImagesCard(event, subdirectory) {
     observer.observe(img);
   });
 
-  // Blocca scroll body e scrolla alla galleria
   document.body.classList.add('no-scroll');
   setTimeout(() => {
     window.scrollTo({ top: imageSection.offsetTop - 20, behavior: 'smooth' });
   }, 100);
 }
 
-// ====== Nascondi Galleria ======
 function hideGallery() {
   imageSection.style.display    = 'none';
   closeGalleryBtn.style.display = 'none';
@@ -116,10 +102,8 @@ function hideGallery() {
   document.body.classList.remove('no-scroll');
 }
 
-// Bottone di chiusura
 closeGalleryBtn.addEventListener('click', hideGallery);
 
-// ====== Modale immagini ======
 function openModalImage(src) {
   const modalImg = document.getElementById('modal-img');
   modalImg.src = src;
@@ -127,7 +111,6 @@ function openModalImage(src) {
   const modal = document.getElementById('modalImage');
   modal.style.display = 'flex';  
 
-  
   const closeBtn = document.getElementById('closeGallery');
   closeBtn.style.display = 'none';  
 
@@ -136,12 +119,11 @@ function openModalImage(src) {
 
   currentIndex = currentImages.indexOf(src);
 
-  
   document.getElementById('prevBtn').onclick = prevImg;
   document.getElementById('nextBtn').onclick = nextImg;
 
- 
   document.addEventListener('keydown', handleKeydown);
+  addSwipeListeners();
 }
 
 function closeModalImage(event) {
@@ -149,16 +131,14 @@ function closeModalImage(event) {
   if (event.target === modal || event.target.classList.contains('close')) {
     modal.style.display = 'none';
 
-    
     const closeBtn = document.getElementById('closeGallery');
     closeBtn.style.display = 'flex'; 
 
-   
     const closeModalBtn = document.getElementById('closeModalBtn');
     closeModalBtn.style.display = 'block';  
 
-    
     document.removeEventListener('keydown', handleKeydown);
+    removeSwipeListeners();
   }
 }
 
@@ -172,12 +152,46 @@ function handleKeydown(event) {
   }
 }
 
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}
+
+function handleSwipe() {
+  const swipeDistance = touchEndX - touchStartX;
+  const swipeThreshold = 50;
+
+  if (swipeDistance > swipeThreshold) {
+    prevImg({ stopPropagation: () => {} });
+  } else if (swipeDistance < -swipeThreshold) {
+    nextImg({ stopPropagation: () => {} });
+  }
+}
+
+function addSwipeListeners() {
+  const modal = document.getElementById('modalImage');
+  modal.addEventListener('touchstart', handleTouchStart, false);
+  modal.addEventListener('touchend', handleTouchEnd, false);
+}
+
+function removeSwipeListeners() {
+  const modal = document.getElementById('modalImage');
+  modal.removeEventListener('touchstart', handleTouchStart, false);
+  modal.removeEventListener('touchend', handleTouchEnd, false);
+}
+
 function prevImg(e) {
   e.stopPropagation();
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
   document.getElementById('modal-img').src = currentImages[currentIndex];
 }
-
 
 function nextImg(e) {
   e.stopPropagation();
@@ -185,7 +199,6 @@ function nextImg(e) {
   document.getElementById('modal-img').src = currentImages[currentIndex];
 }
 
-// ====== Sezione Dettagli ======
 function scrollToDetails(cardNumber) {
   document.querySelectorAll('.details-section').forEach(section => {
     section.style.display = 'none';
@@ -211,8 +224,6 @@ function closeDetails(cardNumber) {
   detailsSection.style.display = 'none';
 }
 
-
-// ====== Accordion ======
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', function () {
     const cardId = this.getAttribute('onclick').match(/\d+/)[0];
@@ -228,11 +239,17 @@ document.querySelectorAll('.accordion').forEach(acc => {
     const isNested = this.classList.contains('nested');
     const isOpen = panel.classList.contains('open');
 
-    
-    hideGallery();  
-
+    hideGallery();
+    toggleNestedPanel(panel);
     if (!isNested) {
       document.querySelectorAll('.panel.open, .nested-panel.open').forEach(p => {
+        if (p !== panel) {
+          closePanel(p);
+          p.previousElementSibling?.classList.remove('active');
+        }
+      });
+    } else {
+      document.querySelectorAll('.panel.nested-panel.open').forEach(p => {
         if (p !== panel) {
           closePanel(p);
           p.previousElementSibling?.classList.remove('active');
@@ -249,6 +266,36 @@ document.querySelectorAll('.accordion').forEach(acc => {
     }
   });
 });
+function toggleNestedPanel(panel) {
+  const isOpen = panel.classList.contains('open');
+
+  if (isOpen) {
+    // ANIMAZIONE DI CHIUSURA
+    panel.style.maxHeight = panel.scrollHeight + 'px'; // Imposta altezza attuale
+    panel.style.opacity = '1';
+
+    requestAnimationFrame(() => {
+      panel.style.maxHeight = '0px'; // Anima la chiusura
+      panel.style.opacity = '0';
+      panel.style.paddingTop = '0px';
+      panel.style.paddingBottom = '0px';
+    });
+
+    // Alla fine della transizione, nascondiamo realmente il pannello
+    panel.addEventListener('transitionend', function onEnd(e) {
+      if (e.propertyName === 'max-height') {
+        panel.classList.remove('open');
+        panel.removeEventListener('transitionend', onEnd);
+      }
+    });
+  } else {
+    // APERTURA
+    panel.classList.add('open');
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    panel.style.opacity = '1';
+  }
+}
+
 
 
 function openAccordionSection(cardId) {
@@ -256,7 +303,6 @@ function openAccordionSection(cardId) {
     section.style.display = 'none';
     section.querySelectorAll('.accordion').forEach(acc => acc.classList.remove('active'));
     section.querySelectorAll('.panel').forEach(panel => {
-      
       panel.classList.remove('open');
       panel.style.display = 'none';
       panel.style.maxHeight = '';
@@ -274,36 +320,36 @@ function openPanel(panel) {
   panel.classList.add('open');
   panel.style.display = 'block';
   panel.style.overflow = 'hidden';
-  panel.style.maxHeight = '0';
+  panel.style.maxHeight = '0px';
   panel.style.opacity = '0';
-  panel.offsetHeight; // forza reflow
+  panel.offsetHeight;
 
-  // easing più morbido e durata leggermente ridotta
-  panel.style.transition = 'max-height 0.4s cubic-bezier(0.25,0.8,0.25,1), opacity 0.4s ease-in-out';
-  panel.style.maxHeight = panel.scrollHeight + 'px';
+  const fullHeight = panel.scrollHeight + 'px';
+  panel.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
+  panel.style.maxHeight = fullHeight;
   panel.style.opacity = '1';
 
-  const handler = (e) => {
+  const onEnd = (e) => {
     if (e.propertyName === 'max-height') {
-      panel.style.maxHeight = 'none';      // libera
+      panel.style.maxHeight = 'none';
       panel.style.overflow = 'visible';
-      panel.removeEventListener('transitionend', handler);
+      panel.removeEventListener('transitionend', onEnd);
     }
   };
-  panel.addEventListener('transitionend', handler);
+  panel.addEventListener('transitionend', onEnd);
 }
 
 function closePanel(panel) {
   panel.style.overflow = 'hidden';
   panel.style.maxHeight = panel.scrollHeight + 'px';
   panel.style.opacity = '1';
-  panel.offsetHeight; // forza reflow
+  panel.offsetHeight;
 
-  panel.style.transition = 'max-height 0.4s cubic-bezier(0.25,0.8,0.25,1), opacity 0.4s ease-in-out';
-  panel.style.maxHeight = '0';
+  panel.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
+  panel.style.maxHeight = '0px';
   panel.style.opacity = '0';
 
-  const handler = (e) => {
+  const onEnd = (e) => {
     if (e.propertyName === 'max-height') {
       panel.classList.remove('open');
       panel.style.display = 'none';
@@ -311,13 +357,12 @@ function closePanel(panel) {
       panel.style.overflow = '';
       panel.style.opacity = '';
       panel.style.transition = '';
-      panel.removeEventListener('transitionend', handler);
+      panel.removeEventListener('transitionend', onEnd);
     }
   };
-  panel.addEventListener('transitionend', handler);
+  panel.addEventListener('transitionend', onEnd);
 }
 
-// ====== Sidebar ======
 function toggleSidebar() {
   const sidebar = document.getElementById('sidebar');
   sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
@@ -326,7 +371,7 @@ function toggleSidebar() {
 function handleSidebarClick(cardNumber) {
   toggleSidebar();
   scrollToDetails(cardNumber);
-
+  openAccordionSection(cardNumber);
   setTimeout(() => {
     const detailsSection = document.getElementById(`details${cardNumber}`);
     detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });

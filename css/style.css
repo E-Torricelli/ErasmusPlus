@@ -218,12 +218,6 @@ margin-bottom: 20px;
 max-width: 700px;
 }
 
-.oid {
-font-size: 0.95rem;
-color: #777;
-margin-top: 10px;
-}
-
 .hero-img {
 flex: 1 1 500px;
 text-align: center;
@@ -316,8 +310,8 @@ width: 100%;
 
 /* ===== DETAILS SECTION ===== */
 .details-section {
-  background: #ffffff;                               /* bianco pulito */
-  border: 2px solid #005ea5;                         /* bordo blu istituzionale */
+  background: #ffffff;                               
+  border: 2px solid #005ea5;                         
   border-radius: 28px;
   padding: 50px;
   margin: 70px auto;
@@ -497,8 +491,10 @@ width: 100%;
 
 .nested-panel.open {
   opacity: 1;
+  max-height: 500px; /* può essere qualsiasi valore grande abbastanza */
   padding: 25px 25px 30px 30px;
 }
+
 
 .nested-panel ul {
   display: flex;

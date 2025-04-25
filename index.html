@@ -20,7 +20,7 @@
   <ul>
       <li><a href="#" onclick="handleSidebarClick(1)">Docenti</a></li>
       <li><a href="#" onclick="handleSidebarClick(2)">Studenti</a></li>
-      <li><a href="#" onclick="handleSidebarClick(3)">Risorse e Gallerie</a></li>
+      <li><a href="#" onclick="handleSidebarClick(3)">Foto e Risorse</a></li>
       <li><a href="index.html">Home</a></li>
   </ul>
 </div>
@@ -36,7 +36,7 @@
   <ul class="navbar-links">
     <li><a href="#" onclick="scrollToDetails(1)">Docenti</a></li>
     <li><a href="#" onclick="scrollToDetails(2)">Studenti</a></li>
-    <li><a href="#" onclick="scrollToDetails(3)">Risorse e Gallerie</a></li>
+    <li><a href="#" onclick="scrollToDetails(3)">Foto e Risorse</a></li>
   </ul>
 
   <!-- Hamburger Menu Button -->
@@ -49,13 +49,13 @@
   <div class="hero-content">
     <div class="hero-text">
       <h1>
-        Programma <em>Erasmus+</em>
+        <em>Erasmus+</em>
       </h1>
-      <p class="subtitle">"E.Torricelli" Accredited School</p>
+  <!-- <p class="subtitle">Scuola accreditata "E.Torricelli" </p>  --> 
       <p class="description">
         Il programma Erasmus+ ha l’obiettivo di consentire l’esperienza di vita in altri Paesi, la conoscenza di altre culture e l’acquisizione di una formazione più varia e completa. I risultati perseguiti sono la crescita dell’identità europea, il rafforzamento del concetto di multiculturalità e di multilinguismo, nonché il miglioramento delle prospettive lavorative dei cittadini europei.
       </p>
-      <p class="oid">OID: E10286234</p>
+    <!--  <p class="oid">OID: E10286234</p> --> 
     </div>
     <div class="hero-img">
       <img src="img/imgerasmus.png" alt="Immagine Erasmus+">
@@ -76,11 +76,10 @@
     </div>
     <div class="card" onclick="scrollToDetails(3)">
       <img src="img/gallerie.png" alt="Illustrazione Gallerie" class="card-img">
-      <h2>Gallerie e Risorse</h2>
+      <h2>Foto e Risorse</h2>
       <p>Accesso a documenti e gallerie fotografiche.</p>
     </div>
   </section>
-  
 
 <!-- Sezione Dettagli per la Card 1 -->
 <section id="details1" class="details-section">
@@ -140,19 +139,34 @@
 <!-- Sezione Dettagli per la Card 3 -->
 <section id="details3" class="details-section">
     <button class="close-btn" onclick="closeDetails(3)">×</button>
-    <h2>Gallerie e Risorse</h2>
+    <h2>Foto e Risorse</h2>
    
-    <button class="accordion">Gallerie</button>
+    <button class="accordion">Foto</button>
     <div class="panel">
       <!-- Accordion annidato -->
-      <button class="accordion nested">Erasmus week in Bergen: 9–15 marzo</button>
+      <button class="accordion nested">Alcalá de Henares</button>
       <div class="panel nested-panel">
         <ul>
-          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/bergen')">Bergen</li>
-          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/jobshadowing')">Jobshadowing</li>
+          <li onclick="loadImagesCard(event,'gallerie/erasmus_bergen/jobshadowing')">Mobilità studenti</li>
+          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/jobshadowing')">Mobilità docenti</li>
+        </ul>
+      </div>
+      <button class="accordion nested">Bergen</button>
+      <div class="panel nested-panel">
+        <ul>
+          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/bergen')">Mobilità studenti</li>
+          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/jobshadowing')">Mobilità docenti</li>
+        </ul>
+      </div>
+      <button class="accordion nested">Copenhagen</button>
+      <div class="panel nested-panel">
+        <ul>
+          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/jobshadowing')">Mobilità studenti</li>
+          <li onclick="loadImagesCard(event, 'gallerie/erasmus_bergen/jobshadowing')">Mobilità docenti</li>
         </ul>
       </div>
     </div>
+
     
 </section>
 
@@ -191,7 +205,9 @@
         </a>
       </div> Social Icons -->
       
-      <p style="margin-top: 0.5rem; color: #ccc;">© 2025 Erasmus+</p>
+      <p style="margin-top: 0.5rem; color: #ccc; font-family: 'Lato', 'Open Sans', sans-serif; text-align: center;">
+        <em>Scuola accreditata:</em> <span style="font-size: 0.85rem;">OID: E10286234</span>
+      </p>
       <img src="img/logo.png" alt="Logo" style="height: 40px; margin-right: 10px; border-radius: 50%;">
     </div>
   </footer>
