@@ -31,10 +31,10 @@ const images = {
 };
 
 // ====== Variabili ======
-const imageSection    = document.getElementById('imageSection');
+const imageSection = document.getElementById('imageSection');
 const closeGalleryBtn = document.getElementById('closeGallery');
 let currentImages = [];
-let currentIndex  = 0;
+let currentIndex = 0;
 
 closeGalleryBtn.style.display = 'none';
 
@@ -61,17 +61,17 @@ function loadImagesCard(event, subdirectory) {
   hideGallery();
   preload(imageList);
 
-  imageSection.style.display    = 'grid';
+  imageSection.style.display = 'grid';
   closeGalleryBtn.style.display = 'flex';
   currentImages = imageList;
-  currentIndex  = 0;
+  currentIndex = 0;
 
   imageList.forEach(src => {
     const img = document.createElement('img');
     img.dataset.src = src;
-    img.loading    = 'lazy';
-    img.alt        = '';
-    img.onclick    = () => openModalImage(src);
+    img.loading = 'lazy';
+    img.alt = '';
+    img.onclick = () => openModalImage(src);
     imageSection.appendChild(img);
   });
 
@@ -96,7 +96,7 @@ function loadImagesCard(event, subdirectory) {
 }
 
 function hideGallery() {
-  imageSection.style.display    = 'none';
+  imageSection.style.display = 'none';
   closeGalleryBtn.style.display = 'none';
   imageSection.querySelectorAll('img').forEach(img => img.remove());
   document.body.classList.remove('no-scroll');
@@ -105,41 +105,45 @@ function hideGallery() {
 closeGalleryBtn.addEventListener('click', hideGallery);
 
 function openModalImage(src) {
+  const modal = document.getElementById('modalImage');
   const modalImg = document.getElementById('modal-img');
   modalImg.src = src;
 
-  const modal = document.getElementById('modalImage');
-  modal.style.display = 'flex';  
+  if (!modal.classList.contains('open')) {
+    document.addEventListener('keydown', handleKeydown);
+    modal.classList.add('open'); // IMPORTANTE: aggiungo la classe
+  }
+
+  modal.style.display = 'flex';
 
   const closeBtn = document.getElementById('closeGallery');
-  closeBtn.style.display = 'none';  
+  closeBtn.style.display = 'none';
 
-  const closeModalBtn = document.getElementById('closeModalBtn');  
-  closeModalBtn.style.display = 'none';
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  if (closeModalBtn) closeModalBtn.style.display = 'none';
 
   currentIndex = currentImages.indexOf(src);
 
   document.getElementById('prevBtn').onclick = prevImg;
   document.getElementById('nextBtn').onclick = nextImg;
 
-  document.addEventListener('keydown', handleKeydown);
   addSwipeListeners();
 }
 
-function closeModalImage(event) {
+
+function closeModalImage() {
   const modal = document.getElementById('modalImage');
-  if (event.target === modal || event.target.classList.contains('close')) {
-    modal.style.display = 'none';
+  modal.style.display = 'none';
+  modal.classList.remove('open'); // TOLGO la classe "open"
 
-    const closeBtn = document.getElementById('closeGallery');
-    closeBtn.style.display = 'flex'; 
+  const closeBtn = document.getElementById('closeGallery');
+  closeBtn.style.display = 'flex';
 
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    closeModalBtn.style.display = 'block';  
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  if (closeModalBtn) closeModalBtn.style.display = 'block';
 
-    document.removeEventListener('keydown', handleKeydown);
-    removeSwipeListeners();
-  }
+  document.removeEventListener('keydown', handleKeydown);
+  removeSwipeListeners();
 }
 
 function handleKeydown(event) {
@@ -148,10 +152,13 @@ function handleKeydown(event) {
   } else if (event.key === 'ArrowRight') {
     nextImg(event);
   } else if (event.key === 'Escape') {
-    closeModalImage(event); 
+    closeModalImage();
   }
 }
 
+
+
+// --- Swipe per smartphone ---
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -203,6 +210,13 @@ function scrollToDetails(cardNumber) {
   document.querySelectorAll('.details-section').forEach(section => {
     section.style.display = 'none';
   });
+}
+
+
+function scrollToDetails(cardNumber) {
+  document.querySelectorAll('.details-section').forEach(section => {
+    section.style.display = 'none';
+  });
 
   const detailsSection = document.getElementById(`details${cardNumber}`);
   if (!detailsSection) return;
@@ -239,9 +253,12 @@ document.querySelectorAll('.accordion').forEach(acc => {
     const isNested = this.classList.contains('nested');
     const isOpen = panel.classList.contains('open');
 
+    // Nascondi tutte le gallerie quando clicchi su un accordion
     hideGallery();
     toggleNestedPanel(panel);
+
     if (!isNested) {
+      // Se non è un pannello annidato, chiudi gli altri pannelli
       document.querySelectorAll('.panel.open, .nested-panel.open').forEach(p => {
         if (p !== panel) {
           closePanel(p);
@@ -249,6 +266,7 @@ document.querySelectorAll('.accordion').forEach(acc => {
         }
       });
     } else {
+      // Gestisci la chiusura di pannelli annidati
       document.querySelectorAll('.panel.nested-panel.open').forEach(p => {
         if (p !== panel) {
           closePanel(p);
@@ -257,6 +275,7 @@ document.querySelectorAll('.accordion').forEach(acc => {
       });
     }
 
+    // Toggle apertura/chiusura pannello corrente
     if (!isOpen) {
       this.classList.add('active');
       openPanel(panel);
@@ -266,16 +285,17 @@ document.querySelectorAll('.accordion').forEach(acc => {
     }
   });
 });
+
 function toggleNestedPanel(panel) {
   const isOpen = panel.classList.contains('open');
 
   if (isOpen) {
-    // ANIMAZIONE DI CHIUSURA
-    panel.style.maxHeight = panel.scrollHeight + 'px'; // Imposta altezza attuale
+    // Animazione di chiusura
+    panel.style.maxHeight = panel.scrollHeight + 'px';
     panel.style.opacity = '1';
 
     requestAnimationFrame(() => {
-      panel.style.maxHeight = '0px'; // Anima la chiusura
+      panel.style.maxHeight = '0px';
       panel.style.opacity = '0';
       panel.style.paddingTop = '0px';
       panel.style.paddingBottom = '0px';
@@ -289,13 +309,12 @@ function toggleNestedPanel(panel) {
       }
     });
   } else {
-    // APERTURA
+    // Animazione di apertura
     panel.classList.add('open');
     panel.style.maxHeight = panel.scrollHeight + 'px';
     panel.style.opacity = '1';
   }
 }
-
 
 
 function openAccordionSection(cardId) {

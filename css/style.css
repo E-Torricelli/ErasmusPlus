@@ -15,6 +15,7 @@ footer {
 }
 main {
   flex: 1;
+  margin-bottom: 50px;
 }
 * {
   box-sizing: border-box;
@@ -395,7 +396,7 @@ width: 100%;
   text-align: left;
   cursor: pointer;
   border-radius: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
   position: relative;
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -425,22 +426,19 @@ width: 100%;
   transform: rotate(90deg);
 }
 
+
 /* === PANEL === */
 .panel {
-  background: #ffffff;
-  transform-origin: top;
-  transform: scaleY(0);
+  position: relative;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
   opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
-  height: auto;            /* lascia che sia naturale */
-  overflow: hidden;        /* nasconde il contenuto quando scalato */
-  display: none;
-  
 }
 
-/* `.open` ora solo rimuove le restrizioni, il JS gestisce max-height/padding/opacity */
+/* Quando il pannello è aperto */
 .panel.open {
-  transform: scaleY(1);
+  max-height: 1000px;  /* Impostiamo un valore sufficiente a contenere il contenuto */
   opacity: 1;
 }
 
@@ -491,7 +489,7 @@ width: 100%;
 
 .nested-panel.open {
   opacity: 1;
-  max-height: 500px; /* può essere qualsiasi valore grande abbastanza */
+  max-height: 1000px; /* Impostato per essere abbastanza alto da contenere il contenuto */
   padding: 25px 25px 30px 30px;
 }
 
