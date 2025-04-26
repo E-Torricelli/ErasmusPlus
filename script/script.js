@@ -111,6 +111,7 @@ function openModalImage(src) {
 
   if (!modal.classList.contains('open')) {
     document.addEventListener('keydown', handleKeydown);
+    addSwipeListeners();
     modal.classList.add('open'); // IMPORTANTE: aggiungo la classe
   }
 
@@ -127,7 +128,7 @@ function openModalImage(src) {
   document.getElementById('prevBtn').onclick = prevImg;
   document.getElementById('nextBtn').onclick = nextImg;
 
-  addSwipeListeners();
+  
 }
 
 
@@ -140,6 +141,7 @@ function closeModalImage() {
   closeBtn.style.display = 'flex';
 
   const closeModalBtn = document.getElementById('closeModalBtn');
+  
   if (closeModalBtn) closeModalBtn.style.display = 'block';
 
   document.removeEventListener('keydown', handleKeydown);
