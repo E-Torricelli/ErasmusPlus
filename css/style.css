@@ -544,6 +544,7 @@ position: relative;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  touch-action: pan-y;
 }
 
 .modalImage img {
@@ -586,6 +587,7 @@ font-size: 2rem;
 cursor: pointer;
 z-index: 1001;
 }
+
 
 
 #closeGallery {

@@ -165,40 +165,40 @@ function handleTouchStart(e) {
 
 function handleTouchEnd(e) {
   touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
+  handleSwipeGesture();
 }
 
-function handleSwipe() {
-  const swipeDistance = touchEndX - touchStartX;
-  const swipeThreshold = 50;
-
-  if (swipeDistance > swipeThreshold) {
-    prevImg({ stopPropagation: () => {} });
-  } else if (swipeDistance < -swipeThreshold) {
-    nextImg({ stopPropagation: () => {} });
+function handleSwipeGesture() {
+  const diffX = touchEndX - touchStartX;
+  if (Math.abs(diffX) > 50) { // soglia minima per evitare tocchi accidentali
+    if (diffX > 0) {
+      prevImg(); // swipe verso destra → immagine precedente
+    } else {
+      nextImg(); // swipe verso sinistra → immagine successiva
+    }
   }
 }
 
 function addSwipeListeners() {
   const modal = document.getElementById('modalImage');
-  modal.addEventListener('touchstart', handleTouchStart, false);
-  modal.addEventListener('touchend', handleTouchEnd, false);
+  modal.addEventListener('touchstart', handleTouchStart, { passive: true });
+  modal.addEventListener('touchend', handleTouchEnd, { passive: true });
 }
 
 function removeSwipeListeners() {
   const modal = document.getElementById('modalImage');
-  modal.removeEventListener('touchstart', handleTouchStart, false);
-  modal.removeEventListener('touchend', handleTouchEnd, false);
+  modal.removeEventListener('touchstart', handleTouchStart);
+  modal.removeEventListener('touchend', handleTouchEnd);
 }
 
 function prevImg(e) {
-  e.stopPropagation();
+  if (e) e.stopPropagation();
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
   document.getElementById('modal-img').src = currentImages[currentIndex];
 }
 
 function nextImg(e) {
-  e.stopPropagation();
+  if (e) e.stopPropagation();
   currentIndex = (currentIndex + 1) % currentImages.length;
   document.getElementById('modal-img').src = currentImages[currentIndex];
 }
