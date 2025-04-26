@@ -155,9 +155,6 @@ function handleKeydown(event) {
     closeModalImage();
   }
 }
-
-
-
 // --- Swipe per smartphone ---
 let touchStartX = 0;
 let touchEndX = 0;
