@@ -176,9 +176,17 @@
 
 <div class="modalImage" id="modalImage" tabindex="0" onclick="closeModalImage(event)">
   <span class="close" onclick="closeModalImage(event)">&times;</span>
-  <span class="nav-arrow left" onclick="prevImg(event)">&#10094;</span>
+  <span class="nav-arrow left" onclick="prevImg(event)">
+    <svg viewBox="0 0 24 24" width="32" height="32">
+      <polyline points="15 18 9 12 15 6" fill="none" stroke="white" stroke-width="2"/>
+    </svg>
+  </span>
   <img id="modal-img" src="" alt="Immagine grande" />
-  <span class="nav-arrow right" onclick="nextImg(event)">&#10095;</span>
+  <span class="nav-arrow right" onclick="nextImg(event)">
+  <svg viewBox="0 0 24 24" width="32" height="32">
+    <polyline points="9 6 15 12 9 18" fill="none" stroke="white" stroke-width="2"/>
+  </svg>
+</span>
 </div>
 </main>
 <footer>

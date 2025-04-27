@@ -112,7 +112,7 @@ function openModalImage(src) {
   if (!modal.classList.contains('open')) {
     document.addEventListener('keydown', handleKeydown);
     addSwipeListeners();
-    modal.classList.add('open'); // IMPORTANTE: aggiungo la classe
+    modal.classList.add('open');
   }
 
   modal.style.display = 'flex';
@@ -135,7 +135,7 @@ function openModalImage(src) {
 function closeModalImage() {
   const modal = document.getElementById('modalImage');
   modal.style.display = 'none';
-  modal.classList.remove('open'); // TOLGO la classe "open"
+  modal.classList.remove('open'); 
 
   const closeBtn = document.getElementById('closeGallery');
   closeBtn.style.display = 'flex';
@@ -172,11 +172,11 @@ function handleTouchEnd(e) {
 
 function handleSwipeGesture() {
   const diffX = touchEndX - touchStartX;
-  if (Math.abs(diffX) > 50) { // soglia minima per evitare tocchi accidentali
+  if (Math.abs(diffX) > 50) { 
     if (diffX > 0) {
-      prevImg(); // swipe verso destra → immagine precedente
+      prevImg(); 
     } else {
-      nextImg(); // swipe verso sinistra → immagine successiva
+      nextImg(); 
     }
   }
 }
@@ -252,12 +252,12 @@ document.querySelectorAll('.accordion').forEach(acc => {
     const isNested = this.classList.contains('nested');
     const isOpen = panel.classList.contains('open');
 
-    // Nascondi tutte le gallerie quando clicchi su un accordion
+    
     hideGallery();
     toggleNestedPanel(panel);
 
     if (!isNested) {
-      // Se non è un pannello annidato, chiudi gli altri pannelli
+      
       document.querySelectorAll('.panel.open, .nested-panel.open').forEach(p => {
         if (p !== panel) {
           closePanel(p);
@@ -265,7 +265,7 @@ document.querySelectorAll('.accordion').forEach(acc => {
         }
       });
     } else {
-      // Gestisci la chiusura di pannelli annidati
+      
       document.querySelectorAll('.panel.nested-panel.open').forEach(p => {
         if (p !== panel) {
           closePanel(p);
@@ -274,7 +274,7 @@ document.querySelectorAll('.accordion').forEach(acc => {
       });
     }
 
-    // Toggle apertura/chiusura pannello corrente
+    
     if (!isOpen) {
       this.classList.add('active');
       openPanel(panel);
@@ -289,7 +289,7 @@ function toggleNestedPanel(panel) {
   const isOpen = panel.classList.contains('open');
 
   if (isOpen) {
-    // Animazione di chiusura
+    
     panel.style.maxHeight = panel.scrollHeight + 'px';
     panel.style.opacity = '1';
 
@@ -405,3 +405,29 @@ function handleWindowResize() {
 
 window.addEventListener('resize', handleWindowResize);
 handleWindowResize();
+let modalImage = document.querySelector('.modalImage img');
+
+  // Aggiungi un evento di pinch-to-zoom
+  let startDist = 0;
+  let scale = 1;
+
+  modalImage.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 2) {
+      startDist = getDistance(e.touches[0], e.touches[1]);
+    }
+  });
+
+  modalImage.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 2) {
+      let dist = getDistance(e.touches[0], e.touches[1]);
+      scale *= dist / startDist;
+      modalImage.style.transform = `scale(${scale})`;
+      startDist = dist;
+    }
+  });
+
+  function getDistance(touch1, touch2) {
+    let dx = touch2.pageX - touch1.pageX;
+    let dy = touch2.pageY - touch1.pageY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
