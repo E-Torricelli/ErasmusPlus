@@ -1,33 +1,79 @@
 // ====== Dati immagini ======
 const images = {
-  "gallerie/erasmus_bergen/bergen": [
-    'gallerie/erasmus_bergen/bergen/slide5.jpg', 'gallerie/erasmus_bergen/bergen/slide6.jpg',
-    'gallerie/erasmus_bergen/bergen/slide7.jpg', 'gallerie/erasmus_bergen/bergen/slide8.jpg', 'gallerie/erasmus_bergen/bergen/slide9.jpg',
-    'gallerie/erasmus_bergen/bergen/slide10.jpg', 'gallerie/erasmus_bergen/bergen/slide12.jpg',
-    'gallerie/erasmus_bergen/bergen/slide13.jpg', 'gallerie/erasmus_bergen/bergen/slide14.jpg',
-    'gallerie/erasmus_bergen/bergen/slide15.jpg', 'gallerie/erasmus_bergen/bergen/slide16.jpg',
-    'gallerie/erasmus_bergen/bergen/slide17.jpg','gallerie/erasmus_bergen/bergen/slide18.jpg',
-    'gallerie/erasmus_bergen/bergen/slide19.jpg','gallerie/erasmus_bergen/bergen/slide20.jpg',
-    'gallerie/erasmus_bergen/bergen/slide21.jpg','gallerie/erasmus_bergen/bergen/slide22.jpg',
-    'gallerie/erasmus_bergen/bergen/slide23.jpg','gallerie/erasmus_bergen/bergen/slide24.jpg',
-    'gallerie/erasmus_bergen/bergen/job1.jpg', 'gallerie/erasmus_bergen/bergen/job2.jpg',
-    'gallerie/erasmus_bergen/bergen/job3.jpg','gallerie/erasmus_bergen/bergen/job4.jpg',
-    'gallerie/erasmus_bergen/bergen/job5.jpg','gallerie/erasmus_bergen/bergen/job6.jpg',
-    'gallerie/erasmus_bergen/bergen/job7.jpg','gallerie/erasmus_bergen/bergen/job8.jpg',
-    'gallerie/erasmus_bergen/bergen/job9.jpg','gallerie/erasmus_bergen/bergen/job10.jpg',
+  "gallerie/erasmus_bergen/weekbergen": [
+    'gallerie/erasmus_bergen/weekbergen/slide5.jpg', 'gallerie/erasmus_bergen/weekbergen/slide6.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide7.jpg', 'gallerie/erasmus_bergen/weekbergen/slide8.jpg', 
+    'gallerie/erasmus_bergen/weekbergen/slide9.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide10.jpg', 'gallerie/erasmus_bergen/weekbergen/slide12.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide13.jpg', 'gallerie/erasmus_bergen/weekbergen/slide14.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide15.jpg', 'gallerie/erasmus_bergen/weekbergen/slide16.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide17.jpg','gallerie/erasmus_bergen/weekbergen/slide18.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide19.jpg','gallerie/erasmus_bergen/weekbergen/slide20.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide21.jpg','gallerie/erasmus_bergen/weekbergen/slide22.jpg',
+    'gallerie/erasmus_bergen/weekbergen/slide23.jpg','gallerie/erasmus_bergen/weekbergen/slide24.jpg',
+    'gallerie/erasmus_bergen/weekbergen/job1.jpg', 'gallerie/erasmus_bergen/weekbergen/job2.jpg',
+    'gallerie/erasmus_bergen/weekbergen/job3.jpg','gallerie/erasmus_bergen/weekbergen/job4.jpg',
+    'gallerie/erasmus_bergen/weekbergen/job5.jpg','gallerie/erasmus_bergen/weekbergen/job6.jpg',
+    'gallerie/erasmus_bergen/weekbergen/job7.jpg','gallerie/erasmus_bergen/weekbergen/job8.jpg',
+    'gallerie/erasmus_bergen/weekbergen/job9.jpg','gallerie/erasmus_bergen/weekbergen/job10.jpg',
   ],
-  "gallerie/erasmus_bergen/jobshadowing": [
+  "gallerie/erasmus_bergen/weekmilan": [
+    'gallerie/erasmus_bergen/weekmilan/img1.jpg','gallerie/erasmus_bergen/weekmilan/img2.jpg',
+    'gallerie/erasmus_bergen/weekmilan/img3.jpg','gallerie/erasmus_bergen/weekmilan/img4.jpg',
+    'gallerie/erasmus_bergen/weekmilan/img5.jpg','gallerie/erasmus_bergen/weekmilan/img6.jpg'
     
   ],
-  "gallerie/erasmus_bergen/students": [
-    
+  "gallerie/erasmus_bergen/docenti": [
+     'gallerie/erasmus_bergen/docenti/img1.jpg','gallerie/erasmus_bergen/docenti/img2.jpg',
+     'gallerie/erasmus_bergen/docenti/img3.jpg','gallerie/erasmus_bergen/docenti/img4.jpg',
+     'gallerie/erasmus_bergen/docenti/img5.jpg','gallerie/erasmus_bergen/docenti/img6.jpg',
+     'gallerie/erasmus_bergen/docenti/img7.jpg','gallerie/erasmus_bergen/docenti/img8.jpg',
+     'gallerie/erasmus_bergen/docenti/img9.jpg','gallerie/erasmus_bergen/docenti/img10.jpg'
   ],
-  "milan/arrivo": [
-    
+  "gallerie/erasmus_alcala/weekalcala": [
+    "gallerie/erasmus_alcala/weekalcala/img1.jpg","gallerie/erasmus_alcala/weekalcala/img2.jpg",
+    "gallerie/erasmus_alcala/weekalcala/img3.jpg","gallerie/erasmus_alcala/weekalcala/img4.jpg",
+    "gallerie/erasmus_alcala/weekalcala/img5.jpeg","gallerie/erasmus_alcala/weekalcala/img6.jpg",
+    "gallerie/erasmus_alcala/weekalcala/img7.jpg","gallerie/erasmus_alcala/weekalcala/img8.jpg",
+    "gallerie/erasmus_alcala/weekalcala/img9.jpg",
   ],
-  "milan/visite": [
-    
+  "gallerie/erasmus_alcala/weekmilan": [
+    "gallerie/erasmus_alcala/weekmilan/img1.jpg","gallerie/erasmus_alcala/weekmilan/img2.jpg",
+    "gallerie/erasmus_alcala/weekmilan/img3.jpg","gallerie/erasmus_alcala/weekmilan/img4.jpeg",
+    "gallerie/erasmus_alcala/weekmilan/img5.jpg","gallerie/erasmus_alcala/weekmilan/img6.jpeg",
+    "gallerie/erasmus_alcala/weekmilan/img7.jpeg","gallerie/erasmus_alcala/weekmilan/img8.jpg",
+    "gallerie/erasmus_alcala/weekmilan/img9.jpg","gallerie/erasmus_alcala/weekmilan/img10.jpeg",
+    "gallerie/erasmus_alcala/weekmilan/img11.jpeg",
+  ],
+
+ "gallerie/erasmus_alcala/docenti": [
+    "gallerie/erasmus_alcala/docenti/img1.jpg", "gallerie/erasmus_alcala/docenti/img2.jpg",
+    "gallerie/erasmus_alcala/docenti/img3.jpg", "gallerie/erasmus_alcala/docenti/img4.jpg",
+    "gallerie/erasmus_alcala/docenti/img5.jpg", "gallerie/erasmus_alcala/docenti/img6.jpg",
+    "gallerie/erasmus_alcala/docenti/img7.jpg", "gallerie/erasmus_alcala/docenti/img8.jpg",
+    "gallerie/erasmus_alcala/docenti/img9.jpg", "gallerie/erasmus_alcala/docenti/img10.jpg",
+    "gallerie/erasmus_alcala/docenti/img11.jpg", "gallerie/erasmus_alcala/docenti/img12.jpg",
+    "gallerie/erasmus_alcala/docenti/img13.jpg", "gallerie/erasmus_alcala/docenti/img14.jpg",
+    "gallerie/erasmus_alcala/docenti/img15.jpg","gallerie/erasmus_alcala/docenti/img16.jpg",
+    "gallerie/erasmus_alcala/docenti/img17.jpg","gallerie/erasmus_alcala/docenti/img18.jpg",
+  ],
+  "gallerie/erasmus_copenaghen/docenti": [
+    "gallerie/erasmus_copenaghen/docenti/img1.jpg", "gallerie/erasmus_copenaghen/docenti/img2.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img3.jpg", "gallerie/erasmus_copenaghen/docenti/img4.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img5.jpg", "gallerie/erasmus_copenaghen/docenti/img6.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img7.jpg", "gallerie/erasmus_copenaghen/docenti/img8.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img9.jpg", "gallerie/erasmus_copenaghen/docenti/img10.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img11.jpg","gallerie/erasmus_copenaghen/docenti/img12.jpg", 
+    "gallerie/erasmus_copenaghen/docenti/img13.jpg","gallerie/erasmus_copenaghen/docenti/img14.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img15.jpg", "gallerie/erasmus_copenaghen/docenti/img16.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img17.jpg", "gallerie/erasmus_copenaghen/docenti/img18.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img19.jpg", "gallerie/erasmus_copenaghen/docenti/img20.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img21.jpg", "gallerie/erasmus_copenaghen/docenti/img22.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img23.jpg", "gallerie/erasmus_copenaghen/docenti/img24.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img25.jpg", "gallerie/erasmus_copenaghen/docenti/img26.jpg",
+    "gallerie/erasmus_copenaghen/docenti/img27.jpg",
   ]
+
 };
 
 // ====== Variabili ======
@@ -209,13 +255,6 @@ function scrollToDetails(cardNumber) {
   document.querySelectorAll('.details-section').forEach(section => {
     section.style.display = 'none';
   });
-}
-
-
-function scrollToDetails(cardNumber) {
-  document.querySelectorAll('.details-section').forEach(section => {
-    section.style.display = 'none';
-  });
 
   const detailsSection = document.getElementById(`details${cardNumber}`);
   if (!detailsSection) return;
@@ -243,7 +282,6 @@ document.querySelectorAll('.card').forEach(card => {
     openAccordionSection(cardId);
   });
 });
-
 document.querySelectorAll('.accordion').forEach(acc => {
   acc.addEventListener('click', function (e) {
     e.stopPropagation();
@@ -252,68 +290,136 @@ document.querySelectorAll('.accordion').forEach(acc => {
     const isNested = this.classList.contains('nested');
     const isOpen = panel.classList.contains('open');
 
-    
-    hideGallery();
-    toggleNestedPanel(panel);
-
     if (!isNested) {
-      
-      document.querySelectorAll('.panel.open, .nested-panel.open').forEach(p => {
-        if (p !== panel) {
+      document.querySelectorAll('.panel.open').forEach(p => {
+        if (!panel.contains(p) && p !== panel) {
           closePanel(p);
           p.previousElementSibling?.classList.remove('active');
         }
       });
     } else {
-      
-      document.querySelectorAll('.panel.nested-panel.open').forEach(p => {
-        if (p !== panel) {
-          closePanel(p);
-          p.previousElementSibling?.classList.remove('active');
+      panel.querySelectorAll('.panel.open').forEach(nestedPanel => {
+        closePanel(nestedPanel);
+        nestedPanel.previousElementSibling?.classList.remove('active');
+      });
+
+      const parentPanel = panel.parentElement;
+      parentPanel.querySelectorAll('.panel.open').forEach(siblingPanel => {
+        if (siblingPanel !== panel) {
+          closePanel(siblingPanel);
+          siblingPanel.previousElementSibling?.classList.remove('active');
         }
       });
     }
 
-    
     if (!isOpen) {
       this.classList.add('active');
       openPanel(panel);
     } else {
       this.classList.remove('active');
       closePanel(panel);
+      hideGallery();
     }
   });
 });
 
-function toggleNestedPanel(panel) {
-  const isOpen = panel.classList.contains('open');
+// Funzione per chiudere tutti i pannelli annidati quando si clicca su "Foto"
+document.querySelector('.foto-button').addEventListener('click', () => {
+  document.querySelectorAll('.nested-panel .panel.open').forEach(nestedPanel => {
+    closePanel(nestedPanel);
+    nestedPanel.previousElementSibling?.classList.remove('active');
+  });
+  hideGallery();
+});
 
-  if (isOpen) {
-    
-    panel.style.maxHeight = panel.scrollHeight + 'px';
-    panel.style.opacity = '1';
+function openPanel(panel) {
+  panel.classList.add('open');
+  panel.style.display = 'block';
+  panel.style.overflow = 'hidden';
+  panel.style.maxHeight = '0px';
+  panel.style.opacity = '0';
+  panel.style.transform = 'scale(0.97)';
+  panel.offsetHeight;
 
-    requestAnimationFrame(() => {
-      panel.style.maxHeight = '0px';
-      panel.style.opacity = '0';
-      panel.style.paddingTop = '0px';
-      panel.style.paddingBottom = '0px';
-    });
+  const fullHeight = panel.scrollHeight + 'px';
+  panel.style.transition = 'max-height 0.8s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.3, 1), transform 0.8s cubic-bezier(0.25, 1, 0.3, 1)';
+  panel.style.maxHeight = fullHeight;
+  panel.style.opacity = '1';
+  panel.style.transform = 'scale(1)';
 
-    // Alla fine della transizione, nascondiamo realmente il pannello
-    panel.addEventListener('transitionend', function onEnd(e) {
-      if (e.propertyName === 'max-height') {
-        panel.classList.remove('open');
-        panel.removeEventListener('transitionend', onEnd);
-      }
-    });
-  } else {
-    // Animazione di apertura
-    panel.classList.add('open');
-    panel.style.maxHeight = panel.scrollHeight + 'px';
-    panel.style.opacity = '1';
-  }
+  const onEnd = (e) => {
+    if (e.propertyName === 'max-height') {
+      panel.style.maxHeight = 'none';
+      panel.style.overflow = 'visible';
+      panel.removeEventListener('transitionend', onEnd);
+    }
+  };
+  panel.addEventListener('transitionend', onEnd);
 }
+
+function closePanel(panel) {
+  const height = panel.scrollHeight + 'px';
+  panel.style.maxHeight = height;
+  panel.style.opacity = '1';
+
+  requestAnimationFrame(() => {
+    panel.style.transition = 'opacity 0.45s ease, max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
+    panel.style.opacity = '0';
+    panel.style.maxHeight = '0px';
+  });
+
+  const onEnd = (e) => {
+    if (e.propertyName === 'max-height') {
+      panel.classList.remove('open');
+      panel.style.maxHeight = '';
+      panel.style.opacity = '';
+      panel.style.transition = '';
+      panel.style.overflow = '';
+      panel.style.display = 'none';
+      panel.removeEventListener('transitionend', onEnd);
+    }
+  };
+  panel.addEventListener('transitionend', onEnd);
+}
+
+function toggleNestedPanel(panel) {
+  panel.querySelectorAll('.nested-panel .accordion').forEach(subAcc => {
+    subAcc.addEventListener('click', function (e) {
+      e.stopPropagation();
+
+      const subPanel = this.nextElementSibling;
+      const isOpen = subPanel.classList.contains('open');
+
+      if (!isOpen) {
+        this.classList.add('active');
+        openPanel(subPanel);
+      } else {
+        this.classList.remove('active');
+        closePanel(subPanel);
+        hideGallery();
+      }
+
+      subPanel.querySelectorAll('.nested-panel .accordion').forEach(thirdLevelAcc => {
+        thirdLevelAcc.addEventListener('click', function (e) {
+          e.stopPropagation();
+
+          const thirdPanel = this.nextElementSibling;
+          const isThirdOpen = thirdPanel.classList.contains('open');
+
+          if (!isThirdOpen) {
+            this.classList.add('active');
+            openPanel(thirdPanel);
+          } else {
+            this.classList.remove('active');
+            closePanel(thirdPanel);
+            hideGallery();
+          }
+        });
+      });
+    });
+  });
+}
+
 
 
 function openAccordionSection(cardId) {
@@ -332,53 +438,6 @@ function openAccordionSection(cardId) {
 
   const section = document.querySelector(`#details${cardId}`);
   section.style.display = 'block';
-}
-
-function openPanel(panel) {
-  panel.classList.add('open');
-  panel.style.display = 'block';
-  panel.style.overflow = 'hidden';
-  panel.style.maxHeight = '0px';
-  panel.style.opacity = '0';
-  panel.offsetHeight;
-
-  const fullHeight = panel.scrollHeight + 'px';
-  panel.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
-  panel.style.maxHeight = fullHeight;
-  panel.style.opacity = '1';
-
-  const onEnd = (e) => {
-    if (e.propertyName === 'max-height') {
-      panel.style.maxHeight = 'none';
-      panel.style.overflow = 'visible';
-      panel.removeEventListener('transitionend', onEnd);
-    }
-  };
-  panel.addEventListener('transitionend', onEnd);
-}
-
-function closePanel(panel) {
-  panel.style.overflow = 'hidden';
-  panel.style.maxHeight = panel.scrollHeight + 'px';
-  panel.style.opacity = '1';
-  panel.offsetHeight;
-
-  panel.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
-  panel.style.maxHeight = '0px';
-  panel.style.opacity = '0';
-
-  const onEnd = (e) => {
-    if (e.propertyName === 'max-height') {
-      panel.classList.remove('open');
-      panel.style.display = 'none';
-      panel.style.maxHeight = '';
-      panel.style.overflow = '';
-      panel.style.opacity = '';
-      panel.style.transition = '';
-      panel.removeEventListener('transitionend', onEnd);
-    }
-  };
-  panel.addEventListener('transitionend', onEnd);
 }
 
 function toggleSidebar() {
