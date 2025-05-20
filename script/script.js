@@ -100,7 +100,10 @@ function preload(images, count = 4) {
 function loadImagesCard(event, subdirectory) {
   event.stopPropagation();
   const imageList = images[subdirectory];
-  if (!imageList) return;
+  if (!imageList) {
+    console.warn(`Nessuna immagine trovata per: ${subdirectory}`);
+    return;
+  }
 
   hideGallery();
 
@@ -110,22 +113,30 @@ function loadImagesCard(event, subdirectory) {
   currentIndex = 0;
 
   imageList.forEach(src => {
-    
     const placeholder = document.createElement('div');
     placeholder.classList.add('placeholder');
     imageSection.appendChild(placeholder);
 
-  
     const img = new Image();
-    img.dataset.src = src;
+    img.src = src;
     img.alt = '';
-    img.style.display = 'none'; 
-    img.onclick = () => openModalImage(src);
+    img.loading = 'lazy';
+    img.style.opacity = '0';
+    img.style.transition = 'opacity 0.4s ease';
+    img.style.width = '100%';
+    img.style.height = '250px';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = '10px';
+    img.style.cursor = 'pointer';
+
+    imageSection.appendChild(img);
 
     img.onload = () => {
       img.classList.add('loaded');
-      placeholder.replaceWith(img); 
-      img.style.display = 'block';
+      placeholder.remove();
+      requestAnimationFrame(() => {
+        img.style.opacity = '1';
+      });
     };
 
     img.onerror = () => {
@@ -134,24 +145,27 @@ function loadImagesCard(event, subdirectory) {
       placeholder.style.animation = 'none';
     };
 
-    img.src = src; 
+    img.onclick = () => openModalImage(src);
   });
 
-  document.body.classList.add('no-scroll');
+  
 
   setTimeout(() => {
     window.scrollTo({ top: imageSection.offsetTop - 20, behavior: 'smooth' });
   }, 100);
 }
+
+
 function hideGallery() {
   imageSection.style.display = 'none';
   closeGalleryBtn.style.display = 'none';
-  imageSection.querySelectorAll('img').forEach(img => img.remove());
-  document.body.classList.remove('no-scroll');
+
+  // Rimuove solo immagini e placeholder, NON il bottone
+  imageSection.querySelectorAll('img, .placeholder').forEach(el => el.remove());
+
+  
 }
-
 closeGalleryBtn.addEventListener('click', hideGallery);
-
 function openModalImage(src) {
   const modal = document.getElementById('modalImage');
   const modalImg = document.getElementById('modal-img');

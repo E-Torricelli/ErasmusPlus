@@ -83,7 +83,14 @@
 
 <!-- Sezione Dettagli per la Card 1 -->
 <section id="details1" class="details-section">
-    <button class="close-btn" onclick="closeDetails(1)">×</button>
+    <button class="close-btn" onclick="closeDetails(1)" title="Chiudi">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+</button>
     <h2>Opportunità per Docenti</h2>
 
     <button class="accordion">Bandi</button>
@@ -111,7 +118,14 @@
 
 <!-- Sezione Dettagli per la Card 2 -->
 <section id="details2" class="details-section">
-    <button class="close-btn" onclick="closeDetails(2)">×</button>
+    <button class="close-btn" onclick="closeDetails(2)" title="Chiudi">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+</button>
     <h2>Opportunità per Studenti</h2>
     <button class="accordion">Bandi</button>
     <div class="panel">
@@ -138,7 +152,14 @@
 
 <!-- Sezione Dettagli per la Card 3 -->
 <section id="details3" class="details-section">
-    <button class="close-btn" onclick="closeDetails(3)">×</button>
+   <button class="close-btn" onclick="closeDetails(3)" title="Chiudi">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+</button>
     <h2>Foto e Risorse</h2>
    
     <button class="accordion">Foto</button>
@@ -191,7 +212,16 @@
 </section>
 
 <div id="imageSection" class="image-section">
-  <button id="closeGallery" class="close-gallery" title="Chiudi">&times;</button>
+  <!-- Le immagini verranno inserite via JS -->
+  <button id="closeGallery" class="close-gallery" title="Chiudi">
+    <!-- Icona SVG di una "X" (es. Lucide, Heroicons, Feather, ecc.) -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+         viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  </button>
 </div>
 
 <div class="modalImage" id="modalImage" tabindex="0" onclick="closeModalImage(event)">
