@@ -19,8 +19,8 @@ const images = {
   ],
   "gallerie/erasmus_bergen/weekmilan": [
     'gallerie/erasmus_bergen/weekmilan/img1.jpg','gallerie/erasmus_bergen/weekmilan/img2.jpg',
-    'gallerie/erasmus_bergen/weekmilan/img3.jpg','gallerie/erasmus_bergen/weekmilan/img4.jpg',
-    'gallerie/erasmus_bergen/weekmilan/img5.jpg','gallerie/erasmus_bergen/weekmilan/img6.jpg'
+    'gallerie/erasmus_bergen/weekmilan/img3.jpg','gallerie/erasmus_bergen/weekmilan/img4.JPG',
+    'gallerie/erasmus_bergen/weekmilan/img5.JPG','gallerie/erasmus_bergen/weekmilan/img6.jpg'
     
   ],
   "gallerie/erasmus_bergen/docenti": [
@@ -105,7 +105,6 @@ function loadImagesCard(event, subdirectory) {
   if (!imageList) return;
 
   hideGallery();
-  preload(imageList);
 
   imageSection.style.display = 'grid';
   closeGalleryBtn.style.display = 'flex';
@@ -113,34 +112,39 @@ function loadImagesCard(event, subdirectory) {
   currentIndex = 0;
 
   imageList.forEach(src => {
-    const img = document.createElement('img');
+    // Crea un contenitore shimmer temporaneo
+    const placeholder = document.createElement('div');
+    placeholder.classList.add('placeholder');
+    imageSection.appendChild(placeholder);
+
+    // Crea l'immagine reale
+    const img = new Image();
     img.dataset.src = src;
-    img.loading = 'lazy';
     img.alt = '';
+    img.style.display = 'none'; // Nascondi finché non è pronta
     img.onclick = () => openModalImage(src);
-    imageSection.appendChild(img);
-  });
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        obs.unobserve(img);
-      }
-    });
-  }, { rootMargin: '100px' });
+    img.onload = () => {
+      img.classList.add('loaded');
+      placeholder.replaceWith(img); // Sostituisce il placeholder con l'immagine
+      img.style.display = 'block';
+    };
 
-  imageSection.querySelectorAll('img').forEach(img => {
-    observer.observe(img);
+    img.onerror = () => {
+      console.warn(`Immagine non trovata: ${src}`);
+      placeholder.style.backgroundColor = '#ccc';
+      placeholder.style.animation = 'none';
+    };
+
+    img.src = src; // Questo innesca il caricamento
   });
 
   document.body.classList.add('no-scroll');
+
   setTimeout(() => {
     window.scrollTo({ top: imageSection.offsetTop - 20, behavior: 'smooth' });
   }, 100);
 }
-
 function hideGallery() {
   imageSection.style.display = 'none';
   closeGalleryBtn.style.display = 'none';
@@ -226,7 +230,6 @@ function handleSwipeGesture() {
     }
   }
 }
-
 function addSwipeListeners() {
   const modal = document.getElementById('modalImage');
   modal.addEventListener('touchstart', handleTouchStart, { passive: true });
@@ -252,6 +255,7 @@ function nextImg(e) {
 }
 
 function scrollToDetails(cardNumber) {
+  // Nascondi tutte le sezioni
   document.querySelectorAll('.details-section').forEach(section => {
     section.style.display = 'none';
   });
@@ -259,17 +263,27 @@ function scrollToDetails(cardNumber) {
   const detailsSection = document.getElementById(`details${cardNumber}`);
   if (!detailsSection) return;
 
+  // Mostra la sezione desiderata
   detailsSection.style.display = 'block';
-  detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  let accordionId = '';
-  if (cardNumber == 1) accordionId = 'accordion-docenti';
-  if (cardNumber == 2) accordionId = 'accordion-studenti';
-  if (cardNumber == 3) accordionId = 'accordion-risorse';
+  // ⚠️ Aspetta un attimo prima di scrollare e aprire gli accordion
+  requestAnimationFrame(() => {
+    detailsSection.offsetHeight; // forza repaint
 
-  const acc = document.getElementById(accordionId);
-  if (acc && !acc.classList.contains('active')) acc.click();
+    setTimeout(() => {
+      detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      let accordionId = '';
+      if (cardNumber == 1) accordionId = 'accordion-docenti';
+      if (cardNumber == 2) accordionId = 'accordion-studenti';
+      if (cardNumber == 3) accordionId = 'accordion-risorse';
+
+      const acc = document.getElementById(accordionId);
+      if (acc && !acc.classList.contains('active')) acc.click();
+    }, 50); // piccolo delay per assicurare che il layout sia stabile
+  });
 }
+
 
 function closeDetails(cardNumber) {
   const detailsSection = document.getElementById(`details${cardNumber}`);
@@ -290,21 +304,19 @@ document.querySelectorAll('.accordion').forEach(acc => {
     const isNested = this.classList.contains('nested');
     const isOpen = panel.classList.contains('open');
 
-    if (!isNested) {
-      document.querySelectorAll('.panel.open').forEach(p => {
-        if (!panel.contains(p) && p !== panel) {
-          closePanel(p);
-          p.previousElementSibling?.classList.remove('active');
-        }
-      });
-    } else {
-      panel.querySelectorAll('.panel.open').forEach(nestedPanel => {
-        closePanel(nestedPanel);
-        nestedPanel.previousElementSibling?.classList.remove('active');
-      });
-
+    // Chiudi altri pannelli (se non è annidato)
+  if (!isNested) {
+  // Chiude tutti i pannelli aperti (figli inclusi) tranne quello selezionato
+  document.querySelectorAll('.panel.open').forEach(p => {
+    if (p !== panel) {
+      closePanel(p);
+      p.previousElementSibling?.classList.remove('active');
+    }
+  });
+}else {
+      // Se è annidato, chiudi solo i fratelli nello stesso livello
       const parentPanel = panel.parentElement;
-      parentPanel.querySelectorAll('.panel.open').forEach(siblingPanel => {
+      parentPanel.querySelectorAll(':scope > .panel.open').forEach(siblingPanel => {
         if (siblingPanel !== panel) {
           closePanel(siblingPanel);
           siblingPanel.previousElementSibling?.classList.remove('active');
@@ -312,24 +324,23 @@ document.querySelectorAll('.accordion').forEach(acc => {
       });
     }
 
+    // Toggle attuale pannello
     if (!isOpen) {
       this.classList.add('active');
       openPanel(panel);
     } else {
       this.classList.remove('active');
+
+      // Chiudi eventuali figli aperti PRIMA di chiudere il padre
+      panel.querySelectorAll('.panel.open').forEach(openChild => {
+        closePanel(openChild);
+        openChild.previousElementSibling?.classList.remove('active');
+      });
+
       closePanel(panel);
-      hideGallery();
+      hideGallery?.(); // se esiste, la chiama
     }
   });
-});
-
-// Funzione per chiudere tutti i pannelli annidati quando si clicca su "Foto"
-document.querySelector('.foto-button').addEventListener('click', () => {
-  document.querySelectorAll('.nested-panel .panel.open').forEach(nestedPanel => {
-    closePanel(nestedPanel);
-    nestedPanel.previousElementSibling?.classList.remove('active');
-  });
-  hideGallery();
 });
 
 function openPanel(panel) {
@@ -338,87 +349,52 @@ function openPanel(panel) {
   panel.style.overflow = 'hidden';
   panel.style.maxHeight = '0px';
   panel.style.opacity = '0';
-  panel.style.transform = 'scale(0.97)';
-  panel.offsetHeight;
+  panel.style.transform = 'scaleY(0.98)';
+  panel.offsetHeight; // forza repaint
 
   const fullHeight = panel.scrollHeight + 'px';
-  panel.style.transition = 'max-height 0.8s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.3, 1), transform 0.8s cubic-bezier(0.25, 1, 0.3, 1)';
+  panel.style.transition = 'max-height 0.5s ease, opacity 0.5s ease, transform 0.3s ease';
   panel.style.maxHeight = fullHeight;
   panel.style.opacity = '1';
-  panel.style.transform = 'scale(1)';
+  panel.style.transform = 'scaleY(1)';
 
-  const onEnd = (e) => {
+  panel.addEventListener('transitionend', function onEnd(e) {
     if (e.propertyName === 'max-height') {
-      panel.style.maxHeight = 'none';
       panel.style.overflow = 'visible';
+      panel.style.maxHeight = 'none'; // permette contenuti dinamici
       panel.removeEventListener('transitionend', onEnd);
     }
-  };
-  panel.addEventListener('transitionend', onEnd);
+  });
 }
 
 function closePanel(panel) {
   const height = panel.scrollHeight + 'px';
   panel.style.maxHeight = height;
   panel.style.opacity = '1';
+  panel.style.transform = 'scaleY(1)';
+  panel.style.overflow = 'hidden';
+  panel.style.transition = 'max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease';
+  panel.offsetHeight; // forza repaint
 
-  requestAnimationFrame(() => {
-    panel.style.transition = 'opacity 0.45s ease, max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
-    panel.style.opacity = '0';
-    panel.style.maxHeight = '0px';
-  });
+  panel.style.maxHeight = '0px';
+  panel.style.opacity = '0';
+  panel.style.transform = 'scaleY(0.98)';
 
-  const onEnd = (e) => {
+  panel.addEventListener('transitionend', function onEnd(e) {
     if (e.propertyName === 'max-height') {
       panel.classList.remove('open');
+      panel.style.display = 'none';
       panel.style.maxHeight = '';
       panel.style.opacity = '';
       panel.style.transition = '';
       panel.style.overflow = '';
-      panel.style.display = 'none';
+      panel.style.transform = '';
       panel.removeEventListener('transitionend', onEnd);
     }
-  };
-  panel.addEventListener('transitionend', onEnd);
-}
-
-function toggleNestedPanel(panel) {
-  panel.querySelectorAll('.nested-panel .accordion').forEach(subAcc => {
-    subAcc.addEventListener('click', function (e) {
-      e.stopPropagation();
-
-      const subPanel = this.nextElementSibling;
-      const isOpen = subPanel.classList.contains('open');
-
-      if (!isOpen) {
-        this.classList.add('active');
-        openPanel(subPanel);
-      } else {
-        this.classList.remove('active');
-        closePanel(subPanel);
-        hideGallery();
-      }
-
-      subPanel.querySelectorAll('.nested-panel .accordion').forEach(thirdLevelAcc => {
-        thirdLevelAcc.addEventListener('click', function (e) {
-          e.stopPropagation();
-
-          const thirdPanel = this.nextElementSibling;
-          const isThirdOpen = thirdPanel.classList.contains('open');
-
-          if (!isThirdOpen) {
-            this.classList.add('active');
-            openPanel(thirdPanel);
-          } else {
-            this.classList.remove('active');
-            closePanel(thirdPanel);
-            hideGallery();
-          }
-        });
-      });
-    });
   });
 }
+
+
 
 
 
