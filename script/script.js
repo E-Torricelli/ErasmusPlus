@@ -75,8 +75,6 @@ const images = {
   ]
 
 };
-
-// ====== Variabili ======
 const imageSection = document.getElementById('imageSection');
 const closeGalleryBtn = document.getElementById('closeGallery');
 let currentImages = [];
@@ -112,21 +110,21 @@ function loadImagesCard(event, subdirectory) {
   currentIndex = 0;
 
   imageList.forEach(src => {
-    // Crea un contenitore shimmer temporaneo
+    
     const placeholder = document.createElement('div');
     placeholder.classList.add('placeholder');
     imageSection.appendChild(placeholder);
 
-    // Crea l'immagine reale
+  
     const img = new Image();
     img.dataset.src = src;
     img.alt = '';
-    img.style.display = 'none'; // Nascondi finché non è pronta
+    img.style.display = 'none'; 
     img.onclick = () => openModalImage(src);
 
     img.onload = () => {
       img.classList.add('loaded');
-      placeholder.replaceWith(img); // Sostituisce il placeholder con l'immagine
+      placeholder.replaceWith(img); 
       img.style.display = 'block';
     };
 
@@ -136,7 +134,7 @@ function loadImagesCard(event, subdirectory) {
       placeholder.style.animation = 'none';
     };
 
-    img.src = src; // Questo innesca il caricamento
+    img.src = src; 
   });
 
   document.body.classList.add('no-scroll');
@@ -180,8 +178,6 @@ function openModalImage(src) {
 
   
 }
-
-
 function closeModalImage() {
   const modal = document.getElementById('modalImage');
   modal.style.display = 'none';
@@ -207,7 +203,7 @@ function handleKeydown(event) {
     closeModalImage();
   }
 }
-// --- Swipe per smartphone ---
+
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -255,7 +251,6 @@ function nextImg(e) {
 }
 
 function scrollToDetails(cardNumber) {
-  // Nascondi tutte le sezioni
   document.querySelectorAll('.details-section').forEach(section => {
     section.style.display = 'none';
   });
@@ -263,10 +258,8 @@ function scrollToDetails(cardNumber) {
   const detailsSection = document.getElementById(`details${cardNumber}`);
   if (!detailsSection) return;
 
-  // Mostra la sezione desiderata
   detailsSection.style.display = 'block';
 
-  // ⚠️ Aspetta un attimo prima di scrollare e aprire gli accordion
   requestAnimationFrame(() => {
     detailsSection.offsetHeight; // forza repaint
 
@@ -280,7 +273,7 @@ function scrollToDetails(cardNumber) {
 
       const acc = document.getElementById(accordionId);
       if (acc && !acc.classList.contains('active')) acc.click();
-    }, 50); // piccolo delay per assicurare che il layout sia stabile
+    }, 50); 
   });
 }
 
@@ -304,9 +297,9 @@ document.querySelectorAll('.accordion').forEach(acc => {
     const isNested = this.classList.contains('nested');
     const isOpen = panel.classList.contains('open');
 
-    // Chiudi altri pannelli (se non è annidato)
+    
   if (!isNested) {
-  // Chiude tutti i pannelli aperti (figli inclusi) tranne quello selezionato
+  
   document.querySelectorAll('.panel.open').forEach(p => {
     if (p !== panel) {
       closePanel(p);
@@ -314,7 +307,7 @@ document.querySelectorAll('.accordion').forEach(acc => {
     }
   });
 }else {
-      // Se è annidato, chiudi solo i fratelli nello stesso livello
+      
       const parentPanel = panel.parentElement;
       parentPanel.querySelectorAll(':scope > .panel.open').forEach(siblingPanel => {
         if (siblingPanel !== panel) {
@@ -324,21 +317,21 @@ document.querySelectorAll('.accordion').forEach(acc => {
       });
     }
 
-    // Toggle attuale pannello
+   
     if (!isOpen) {
       this.classList.add('active');
       openPanel(panel);
     } else {
       this.classList.remove('active');
 
-      // Chiudi eventuali figli aperti PRIMA di chiudere il padre
+      
       panel.querySelectorAll('.panel.open').forEach(openChild => {
         closePanel(openChild);
         openChild.previousElementSibling?.classList.remove('active');
       });
 
       closePanel(panel);
-      hideGallery?.(); // se esiste, la chiama
+      hideGallery?.(); 
     }
   });
 });
@@ -350,7 +343,7 @@ function openPanel(panel) {
   panel.style.maxHeight = '0px';
   panel.style.opacity = '0';
   panel.style.transform = 'scaleY(0.98)';
-  panel.offsetHeight; // forza repaint
+  panel.offsetHeight;
 
   const fullHeight = panel.scrollHeight + 'px';
   panel.style.transition = 'max-height 0.5s ease, opacity 0.5s ease, transform 0.3s ease';
@@ -361,7 +354,7 @@ function openPanel(panel) {
   panel.addEventListener('transitionend', function onEnd(e) {
     if (e.propertyName === 'max-height') {
       panel.style.overflow = 'visible';
-      panel.style.maxHeight = 'none'; // permette contenuti dinamici
+      panel.style.maxHeight = 'none'; 
       panel.removeEventListener('transitionend', onEnd);
     }
   });
@@ -374,8 +367,7 @@ function closePanel(panel) {
   panel.style.transform = 'scaleY(1)';
   panel.style.overflow = 'hidden';
   panel.style.transition = 'max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease';
-  panel.offsetHeight; // forza repaint
-
+  panel.offsetHeight; 
   panel.style.maxHeight = '0px';
   panel.style.opacity = '0';
   panel.style.transform = 'scaleY(0.98)';
@@ -393,11 +385,6 @@ function closePanel(panel) {
     }
   });
 }
-
-
-
-
-
 function openAccordionSection(cardId) {
   document.querySelectorAll('.details-section').forEach(section => {
     section.style.display = 'none';
@@ -442,7 +429,6 @@ window.addEventListener('resize', handleWindowResize);
 handleWindowResize();
 let modalImage = document.querySelector('.modalImage img');
 
-  // Aggiungi un evento di pinch-to-zoom
   let startDist = 0;
   let scale = 1;
 
