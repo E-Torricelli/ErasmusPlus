@@ -366,24 +366,6 @@ margin: 0;
   .news-expandable { max-width: 1100px; margin-top: 100px; }
 }
 
-@media (max-width: 600px) {
-  .news-expandable { margin-top: 40px; padding: 20px 18px; background-color: #fff; }
-  
-  .full-official-text { 
-    line-height: 1.85; 
-    font-size: 0.95rem; 
-    text-align: left; 
-  }
-
-  .pnrr-official-title {
-    display: block;
-    margin: 15px 0;
-    padding-left: 10px;
-    border-left: 2px solid #004a99;
-    font-style: normal;
-    color: #004a99;
-  }
-}
 /* ===== CARD SECTION ===== */
 .card-section {
 display: flex;
@@ -1095,6 +1077,17 @@ overflow: hidden;
   .modalImage img:hover {
     transform: scale(1.03);
   }
+  .news-expandable {
+    max-width: 100%;
+    margin: 30px 15px;
+    padding: 20px;
+  }
+  .news-preview h2 {
+    font-size: 1.4rem;
+  }
+  .full-official-text h3 {
+    font-size: 1.25rem;
+  }
 }
 @media (max-width: 1024px) {
 
@@ -1127,6 +1120,15 @@ overflow: hidden;
 
   .hero-img img {
     max-width: 80%;
+  }
+  .news-expandable {
+    max-width: 95%;
+    margin: 40px auto;
+    padding: 25px;
+  }
+  .full-official-text {
+    font-size: 1rem;
+    line-height: 1.7;
   }
 }
 
@@ -1180,5 +1182,27 @@ overflow: hidden;
 
   .hero-img img {
     max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .news-expandable { 
+    margin-top: 120px; /* Aumentato per staccarla dalla Hero */
+    padding: 20px 18px; 
+    background-color: #fff; 
+  }
+  
+  .full-official-text { 
+    line-height: 1.85; 
+    font-size: 0.95rem; 
+    text-align: left; 
+  }
+
+  .pnrr-official-title {
+    display: block;
+    margin: 15px 0;
+    padding-left: 10px;
+    border-left: 2px solid #004a99;
+    font-style: normal;
+    color: #004a99;
   }
 }
