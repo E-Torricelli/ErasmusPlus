@@ -1051,6 +1051,7 @@ overflow: hidden;
 
   .modalImage .nav-arrow.left,
   .modalImage .nav-arrow.right {
+    display: none !important;
     width: 40px;
     height: 40px;
     background-color: var(--primary-color);
