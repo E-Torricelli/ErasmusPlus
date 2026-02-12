@@ -72,6 +72,24 @@ const images = {
     "gallerie/erasmus_copenaghen/docenti/img23.jpg", "gallerie/erasmus_copenaghen/docenti/img24.jpg",
     "gallerie/erasmus_copenaghen/docenti/img25.jpg", "gallerie/erasmus_copenaghen/docenti/img26.jpg",
     "gallerie/erasmus_copenaghen/docenti/img27.jpg",
+  ],
+  "gallerie/erasmus_dublino": [
+    "gallerie/erasmus_dublino/img1.jpg","gallerie/erasmus_dublino/img2.jpg", "gallerie/erasmus_dublino/img3.jpg",
+  "gallerie/erasmus_dublino/img4.jpg","gallerie/erasmus_dublino/img5.jpg","gallerie/erasmus_dublino/img6.jpg",
+  "gallerie/erasmus_dublino/img7.jpg","gallerie/erasmus_dublino/img8.jpg","gallerie/erasmus_dublino/img9.jpeg",
+  "gallerie/erasmus_dublino/img10.jpeg","gallerie/erasmus_dublino/img11.jpeg","gallerie/erasmus_dublino/img12.jpeg",
+  "gallerie/erasmus_dublino/img13.jpeg","gallerie/erasmus_dublino/img14.jpeg","gallerie/erasmus_dublino/img15.jpeg",
+  "gallerie/erasmus_dublino/img16.jpeg","gallerie/erasmus_dublino/img17.jpeg", "gallerie/erasmus_dublino/img18.jpeg",
+  "gallerie/erasmus_dublino/img19.jpeg"
+  ],
+  "gallerie/erasmus_lione": [
+    "gallerie/erasmus_lione/img1.jpeg","gallerie/erasmus_lione/img2.jpeg","gallerie/erasmus_lione/img3.jpeg",
+  "gallerie/erasmus_lione/img4.jpeg","gallerie/erasmus_lione/img5.jpeg","gallerie/erasmus_lione/img6.jpeg",
+  "gallerie/erasmus_lione/img7.jpeg","gallerie/erasmus_lione/img8.jpeg","gallerie/erasmus_lione/img9.jpeg",
+  "gallerie/erasmus_lione/img10.jpeg","gallerie/erasmus_lione/img11.jpeg","gallerie/erasmus_lione/img12.jpeg",
+  "gallerie/erasmus_lione/img13.jpeg","gallerie/erasmus_lione/img14.jpeg","gallerie/erasmus_lione/img15.jpeg",
+  "gallerie/erasmus_lione/img16.jpeg","gallerie/erasmus_lione/img17.jpeg","gallerie/erasmus_lione/img18.jpeg",
+  "gallerie/erasmus_lione/img19.jpeg"
   ]
 
 };
