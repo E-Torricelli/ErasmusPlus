@@ -76,7 +76,7 @@ const images = {
   "gallerie/erasmus_dublino": [
     "gallerie/erasmus_dublino/img1.jpg","gallerie/erasmus_dublino/img2.jpg", "gallerie/erasmus_dublino/img3.jpg",
   "gallerie/erasmus_dublino/img4.jpg","gallerie/erasmus_dublino/img5.jpg","gallerie/erasmus_dublino/img6.jpg",
-  "gallerie/erasmus_dublino/img7.jpg","gallerie/erasmus_dublino/img8.jpg","gallerie/erasmus_dublino/img9.jpeg",
+  "gallerie/erasmus_dublino/img7.JPG","gallerie/erasmus_dublino/img8.JPG","gallerie/erasmus_dublino/img9.jpeg",
   "gallerie/erasmus_dublino/img10.jpeg","gallerie/erasmus_dublino/img11.jpeg","gallerie/erasmus_dublino/img12.jpeg",
   "gallerie/erasmus_dublino/img13.jpeg","gallerie/erasmus_dublino/img14.jpeg","gallerie/erasmus_dublino/img15.jpeg",
   "gallerie/erasmus_dublino/img16.jpeg","gallerie/erasmus_dublino/img17.jpeg", "gallerie/erasmus_dublino/img18.jpeg",
