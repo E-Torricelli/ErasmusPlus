@@ -459,31 +459,40 @@ function handleWindowResize() {
 
 window.addEventListener('resize', handleWindowResize);
 handleWindowResize();
+// --- SOSTITUISCI DA QUI ---
 let modalImage = document.querySelector('.modalImage img');
+let startDist = 0;
+let currentScale = 1; 
 
-  let startDist = 0;
-  let scale = 1;
-
-  modalImage.addEventListener('touchstart', function(e) {
+modalImage.addEventListener('touchstart', function(e) {
     if (e.touches.length === 2) {
-      startDist = getDistance(e.touches[0], e.touches[1]);
+        startDist = getDistance(e.touches[0], e.touches[1]);
     }
-  });
+});
 
-  modalImage.addEventListener('touchmove', function(e) {
+modalImage.addEventListener('touchmove', function(e) {
     if (e.touches.length === 2) {
-      let dist = getDistance(e.touches[0], e.touches[1]);
-      scale *= dist / startDist;
-      modalImage.style.transform = `scale(${scale})`;
-      startDist = dist;
-    }
-  });
+        e.preventDefault(); // IMPORTANTE: ferma il movimento della pagina
+        let dist = getDistance(e.touches[0], e.touches[1]);
+        let factor = dist / startDist;
+        
+        currentScale *= factor;
 
-  function getDistance(touch1, touch2) {
+        // Limiti per non far rompere l'immagine
+        if (currentScale < 1) currentScale = 1;
+        if (currentScale > 4) currentScale = 4;
+
+        this.style.transform = `scale(${currentScale})`;
+        startDist = dist;
+    }
+}, { passive: false }); // Serve per far funzionare e.preventDefault() su alcuni browser
+
+function getDistance(touch1, touch2) {
     let dx = touch2.pageX - touch1.pageX;
     let dy = touch2.pageY - touch1.pageY;
     return Math.sqrt(dx * dx + dy * dy);
-  }
+}
+// --- A QUI ---
   // ====== Gestione Sezione News Espandibile (Lione/Dublino) ======
 function toggleNews() {
   const content = document.getElementById('news-details');
