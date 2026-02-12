@@ -249,6 +249,11 @@ function handleTouchEnd(e) {
 }
 
 function handleSwipeGesture() {
+  
+  if (typeof currentScale !== 'undefined' && currentScale > 1) {
+    return; 
+  }
+
   const diffX = touchEndX - touchStartX;
   if (Math.abs(diffX) > 50) { 
     if (diffX > 0) {
