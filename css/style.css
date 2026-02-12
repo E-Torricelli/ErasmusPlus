@@ -230,6 +230,160 @@ border-radius: 0;
 box-shadow: none;
 margin: 0;
 }
+
+
+/* --- SEZIONE NEWS CONTENITORE --- */
+.news-expandable {
+  max-width: 960px;
+  margin: 70px auto 40px auto;
+  background-color: #fcfcfc;
+  padding: 30px 40px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  font-family: inherit;
+}
+
+.news-preview h2 {
+  color: #004a99;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.news-preview p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+
+.read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #004a99;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.arrow-icon {
+  font-size: 0.8rem;
+  transition: transform 0.4s ease;
+  display: inline-block;
+}
+
+.read-more-btn.active .arrow-icon {
+  transform: rotate(180deg);
+}
+
+
+.news-details-content {
+  display: none;      
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease-out, opacity 0.5s ease;
+}
+
+.news-details-content.open {
+  display: block;     
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.full-official-text {
+  text-align: justify;
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.8;
+}
+
+.full-official-text p {
+  margin-bottom: 20px;
+}
+
+.pnrr-official-title {
+  font-weight: 700;
+  color: #222;
+  font-style: italic;
+  display: inline;
+}
+
+.full-official-text strong {
+  color: #004a99;
+  font-weight: 600;
+}
+
+.full-official-text h3 {
+  font-size: 1.4rem;
+  color: #004a99;
+  margin-bottom: 25px;
+  border-left: 4px solid #004a99;
+  padding-left: 15px;
+}
+
+.full-official-text h4 {
+  font-size: 1.2rem;
+  color: #004a99;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  background: #f0f7ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.full-official-text ul {
+  list-style: none;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.full-official-text ul li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 25px;
+}
+
+.full-official-text ul li::before {
+  content: "•";
+  color: #004a99;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+
+
+@media (min-width: 1400px) {
+  .news-expandable { max-width: 1100px; margin-top: 100px; }
+}
+
+@media (max-width: 600px) {
+  .news-expandable { margin-top: 40px; padding: 20px 18px; background-color: #fff; }
+  
+  .full-official-text { 
+    line-height: 1.85; 
+    font-size: 0.95rem; 
+    text-align: left; 
+  }
+
+  .pnrr-official-title {
+    display: block;
+    margin: 15px 0;
+    padding-left: 10px;
+    border-left: 2px solid #004a99;
+    font-style: normal;
+    color: #004a99;
+  }
+}
 /* ===== CARD SECTION ===== */
 .card-section {
 display: flex;
@@ -555,7 +709,7 @@ width: 100%;
   border-radius: 10px;
   cursor: pointer;
 
-  /* Per effetto fade-in */
+ 
   opacity: 0;
   filter: blur(20px);
   transition: opacity 0.5s ease, filter 0.5s ease;
@@ -567,7 +721,7 @@ width: 100%;
   filter: blur(0);
 }
 
-/* Placeholder con shimmer */
+
 .image-section .placeholder {
   width: 100%;
   height: 250px;
@@ -577,7 +731,7 @@ width: 100%;
   animation: shimmer 1.2s infinite;
 }
 
-/* Animazione shimmer */
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -587,7 +741,6 @@ width: 100%;
   }
 }
 
-/* Blocca lo scroll del body quando la galleria è aperta */
 body.no-scroll {
   overflow: hidden;
 }
@@ -609,7 +762,7 @@ body.no-scroll {
   border-radius: 10px;
   cursor: pointer;
 
-  /* Per effetto fade-in */
+  
   opacity: 0;
   filter: blur(20px);
   transition: opacity 0.5s ease, filter 0.5s ease;
@@ -621,7 +774,7 @@ body.no-scroll {
   filter: blur(0);
 }
 
-/* Placeholder con shimmer */
+
 .image-section .placeholder {
   width: 100%;
   height: 250px;
@@ -631,7 +784,7 @@ body.no-scroll {
   animation: shimmer 1.2s infinite;
 }
 
-/* Animazione shimmer */
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -641,12 +794,12 @@ body.no-scroll {
   }
 }
 
-/* Blocca lo scroll del body quando la galleria è aperta */
+
 body.no-scroll {
   overflow: hidden;
 }
 
-/* Bottone per chiudere la galleria */
+
 .close-gallery {
   margin-top: 2rem;
   margin-inline: auto;
@@ -944,7 +1097,7 @@ overflow: hidden;
   }
 }
 @media (max-width: 1024px) {
-  /* Tablet */
+
   .hero {
     padding: 60px 20px;
   }

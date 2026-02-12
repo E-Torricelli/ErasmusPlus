@@ -160,7 +160,7 @@ function hideGallery() {
   imageSection.style.display = 'none';
   closeGalleryBtn.style.display = 'none';
 
-  // Rimuove solo immagini e placeholder, NON il bottone
+ 
   imageSection.querySelectorAll('img, .placeholder').forEach(el => el.remove());
 
   
@@ -275,7 +275,7 @@ function scrollToDetails(cardNumber) {
   detailsSection.style.display = 'block';
 
   requestAnimationFrame(() => {
-    detailsSection.offsetHeight; // forza repaint
+    detailsSection.offsetHeight; 
 
     setTimeout(() => {
       detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -466,3 +466,59 @@ let modalImage = document.querySelector('.modalImage img');
     let dy = touch2.pageY - touch1.pageY;
     return Math.sqrt(dx * dx + dy * dy);
   }
+  // ====== Gestione Sezione News Espandibile (Lione/Dublino) ======
+function toggleNews() {
+  const content = document.getElementById('news-details');
+  const btn = document.querySelector('.read-more-btn');
+  
+  if (!content.classList.contains('open')) {
+    // --- APERTURA ---
+    content.classList.add('open');
+    content.style.display = 'block';
+    content.style.maxHeight = '0px';
+    content.style.opacity = '0';
+   
+    content.offsetHeight; 
+
+    const fullHeight = content.scrollHeight + 'px';
+    content.style.transition = 'max-height 0.6s ease, opacity 0.5s ease';
+    content.style.maxHeight = fullHeight;
+    content.style.opacity = '1';
+    
+    btn.innerHTML = 'Chiudi testo completo <i class="fas fa-chevron-down arrow-icon"></i>';
+    btn.classList.add('active');
+    
+    
+    const onOpenEnd = function(e) {
+      if (e.propertyName === 'max-height') {
+        content.style.maxHeight = 'none';
+        content.removeEventListener('transitionend', onOpenEnd);
+      }
+    };
+    content.addEventListener('transitionend', onOpenEnd);
+
+  } else {
+   
+    content.style.maxHeight = content.scrollHeight + 'px';
+    content.offsetHeight; 
+
+    content.style.transition = 'max-height 0.4s ease, opacity 0.3s ease';
+    content.style.maxHeight = '0px';
+    content.style.opacity = '0';
+    
+    btn.innerHTML = 'Leggi il testo completo <i class="fas fa-chevron-down arrow-icon"></i>';
+    btn.classList.remove('active');
+    
+    const onCloseEnd = function(e) {
+      if (e.propertyName === 'max-height') {
+        content.classList.remove('open');
+        content.style.display = 'none';
+     
+        content.style.maxHeight = '';
+        content.style.opacity = '';
+        content.removeEventListener('transitionend', onCloseEnd);
+      }
+    };
+    content.addEventListener('transitionend', onCloseEnd);
+  }
+}
